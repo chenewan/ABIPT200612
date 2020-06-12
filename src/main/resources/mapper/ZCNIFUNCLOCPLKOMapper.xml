@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.byd.emg.mapper.ZCNIFUNCLOCPLKOMapper">
+  <resultMap id="BaseResultMap" type="com.byd.emg.pojo.ZCNIFUNCLOCPLKO">
+    <id column="PLKOID" jdbcType="INTEGER" property="plkoid" />
+    <result column="PLNNR" jdbcType="VARCHAR" property="plnnr" />
+    <result column="PLNAL" jdbcType="VARCHAR" property="plnal" />
+    <result column="KTEXT" jdbcType="VARCHAR" property="ktext" />
+    <result column="LOEKZ" jdbcType="VARCHAR" property="loekz" />
+    <result column="WERKS" jdbcType="VARCHAR" property="werks" />
+    <result column="VAGRP" jdbcType="VARCHAR" property="vagrp" />
+    <result column="ANLZU" jdbcType="VARCHAR" property="anlzu" />
+    <result column="STRAT" jdbcType="VARCHAR" property="strat" />
+    <result column="ANDAT" jdbcType="VARCHAR" property="andat" />
+    <result column="AEDAT" jdbcType="VARCHAR" property="aedat" />
+    <result column="Remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PLKOID, PLNNR, PLNAL, KTEXT, LOEKZ, WERKS, VAGRP, ANLZU, STRAT, ANDAT, AEDAT, Remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZCNIFUNCLOCPLKO
+    where PLKOID = #{plkoid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ZCNIFUNCLOCPLKO
+    where PLKOID = #{plkoid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.byd.emg.pojo.ZCNIFUNCLOCPLKO">
+    insert into ZCNIFUNCLOCPLKO (PLKOID, PLNNR, PLNAL, 
+      KTEXT, LOEKZ, WERKS, 
+      VAGRP, ANLZU, STRAT, 
+      ANDAT, AEDAT, Remark
+      )
+    values (#{plkoid,jdbcType=INTEGER}, #{plnnr,jdbcType=VARCHAR}, #{plnal,jdbcType=VARCHAR}, 
+      #{ktext,jdbcType=VARCHAR}, #{loekz,jdbcType=VARCHAR}, #{werks,jdbcType=VARCHAR}, 
+      #{vagrp,jdbcType=VARCHAR}, #{anlzu,jdbcType=VARCHAR}, #{strat,jdbcType=VARCHAR}, 
+      #{andat,jdbcType=VARCHAR}, #{aedat,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.byd.emg.pojo.ZCNIFUNCLOCPLKO">
+
+    IF NOT exists(SELECT TOP (1) * FROM ZCNIFUNCLOCPLKO
+    where PLNNR = #{plnnr,jdbcType=VARCHAR}
+    AND PLNAL = #{plnal,jdbcType=VARCHAR})
+    insert into ZCNIFUNCLOCPLKO (PLKOID, PLNNR, PLNAL,
+      KTEXT, LOEKZ, WERKS,
+      VAGRP, ANLZU, STRAT,
+      ANDAT, AEDAT, Remark
+      )
+    values (#{plkoid,jdbcType=INTEGER}, #{plnnr,jdbcType=VARCHAR}, #{plnal,jdbcType=VARCHAR},
+      #{ktext,jdbcType=VARCHAR}, #{loekz,jdbcType=VARCHAR}, #{werks,jdbcType=VARCHAR},
+      #{vagrp,jdbcType=VARCHAR}, #{anlzu,jdbcType=VARCHAR}, #{strat,jdbcType=VARCHAR},
+      #{andat,jdbcType=VARCHAR}, #{aedat,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+    ELSE
+    update ZCNIFUNCLOCPLKO
+    set PLNNR = #{plnnr,jdbcType=VARCHAR},
+      PLNAL = #{plnal,jdbcType=VARCHAR},
+      KTEXT = #{ktext,jdbcType=VARCHAR},
+      LOEKZ = #{loekz,jdbcType=VARCHAR},
+      WERKS = #{werks,jdbcType=VARCHAR},
+      VAGRP = #{vagrp,jdbcType=VARCHAR},
+      ANLZU = #{anlzu,jdbcType=VARCHAR},
+      STRAT = #{strat,jdbcType=VARCHAR},
+      ANDAT = #{andat,jdbcType=VARCHAR},
+      AEDAT = #{aedat,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where PLNNR = #{plnnr,jdbcType=VARCHAR}
+    AND PLNAL = #{plnal,jdbcType=VARCHAR}
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.byd.emg.pojo.ZCNIFUNCLOCPLKO">
+    update ZCNIFUNCLOCPLKO
+    <set>
+      <if test="plnnr != null">
+        PLNNR = #{plnnr,jdbcType=VARCHAR},
+      </if>
+      <if test="plnal != null">
+        PLNAL = #{plnal,jdbcType=VARCHAR},
+      </if>
+      <if test="ktext != null">
+        KTEXT = #{ktext,jdbcType=VARCHAR},
+      </if>
+      <if test="loekz != null">
+        LOEKZ = #{loekz,jdbcType=VARCHAR},
+      </if>
+      <if test="werks != null">
+        WERKS = #{werks,jdbcType=VARCHAR},
+      </if>
+      <if test="vagrp != null">
+        VAGRP = #{vagrp,jdbcType=VARCHAR},
+      </if>
+      <if test="anlzu != null">
+        ANLZU = #{anlzu,jdbcType=VARCHAR},
+      </if>
+      <if test="strat != null">
+        STRAT = #{strat,jdbcType=VARCHAR},
+      </if>
+      <if test="andat != null">
+        ANDAT = #{andat,jdbcType=VARCHAR},
+      </if>
+      <if test="aedat != null">
+        AEDAT = #{aedat,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PLKOID = #{plkoid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.byd.emg.pojo.ZCNIFUNCLOCPLKO">
+    update ZCNIFUNCLOCPLKO
+    set PLNNR = #{plnnr,jdbcType=VARCHAR},
+      PLNAL = #{plnal,jdbcType=VARCHAR},
+      KTEXT = #{ktext,jdbcType=VARCHAR},
+      LOEKZ = #{loekz,jdbcType=VARCHAR},
+      WERKS = #{werks,jdbcType=VARCHAR},
+      VAGRP = #{vagrp,jdbcType=VARCHAR},
+      ANLZU = #{anlzu,jdbcType=VARCHAR},
+      STRAT = #{strat,jdbcType=VARCHAR},
+      ANDAT = #{andat,jdbcType=VARCHAR},
+      AEDAT = #{aedat,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where PLKOID = #{plkoid,jdbcType=INTEGER}
+  </update>
+</mapper>

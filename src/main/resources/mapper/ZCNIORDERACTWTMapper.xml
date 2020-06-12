@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.byd.emg.mapper.ZCNIORDERACTWTMapper">
+  <resultMap id="BaseResultMap" type="com.byd.emg.pojo.ZCNIORDERACTWT">
+    <id column="WTID" jdbcType="INTEGER" property="wtid" />
+    <result column="AUFNR" jdbcType="VARCHAR" property="aufnr" />
+    <result column="RUECK" jdbcType="VARCHAR" property="rueck" />
+    <result column="RMZHL" jdbcType="VARCHAR" property="rmzhl" />
+    <result column="VORNR" jdbcType="VARCHAR" property="vornr" />
+    <result column="PERNR" jdbcType="VARCHAR" property="pernr" />
+    <result column="ERSDA" jdbcType="VARCHAR" property="ersda" />
+    <result column="LAEDA" jdbcType="VARCHAR" property="laeda" />
+    <result column="NACHN" jdbcType="VARCHAR" property="nachn" />
+    <result column="VORNA" jdbcType="VARCHAR" property="vorna" />
+    <result column="ISMNW" jdbcType="VARCHAR" property="ismnw" />
+    <result column="ISMNE" jdbcType="VARCHAR" property="ismne" />
+    <result column="STOKZ" jdbcType="VARCHAR" property="stokz" />
+    <result column="STZHL" jdbcType="VARCHAR" property="stzhl" />
+    <result column="ARBPL" jdbcType="VARCHAR" property="arbpl" />
+    <result column="LTXA1" jdbcType="VARCHAR" property="ltxa1" />
+    <result column="Remark" jdbcType="VARCHAR" property="remark" />
+    <result column="LTXA2" jdbcType="VARCHAR" property="ltxa2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    WTID, AUFNR, RUECK, RMZHL, VORNR, PERNR, ERSDA, LAEDA, NACHN, VORNA, ISMNW, ISMNE, 
+    STOKZ, STZHL, ARBPL, LTXA1, Remark, LTXA2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZCNIORDERACTWT
+    where WTID = #{wtid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ZCNIORDERACTWT
+    where WTID = #{wtid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.byd.emg.pojo.ZCNIORDERACTWT">
+    insert into ZCNIORDERACTWT (WTID, AUFNR, RUECK, 
+      RMZHL, VORNR, PERNR, 
+      ERSDA, LAEDA, NACHN, 
+      VORNA, ISMNW, ISMNE, 
+      STOKZ, STZHL, ARBPL, 
+      LTXA1, Remark, LTXA2
+      )
+    values (#{wtid,jdbcType=INTEGER}, #{aufnr,jdbcType=VARCHAR}, #{rueck,jdbcType=VARCHAR}, 
+      #{rmzhl,jdbcType=VARCHAR}, #{vornr,jdbcType=VARCHAR}, #{pernr,jdbcType=VARCHAR}, 
+      #{ersda,jdbcType=VARCHAR}, #{laeda,jdbcType=VARCHAR}, #{nachn,jdbcType=VARCHAR}, 
+      #{vorna,jdbcType=VARCHAR}, #{ismnw,jdbcType=VARCHAR}, #{ismne,jdbcType=VARCHAR}, 
+      #{stokz,jdbcType=VARCHAR}, #{stzhl,jdbcType=VARCHAR}, #{arbpl,jdbcType=VARCHAR}, 
+      #{ltxa1,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{ltxa2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.byd.emg.pojo.ZCNIORDERACTWT">
+    insert into ZCNIORDERACTWT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="wtid != null">
+        WTID,
+      </if>
+      <if test="aufnr != null">
+        AUFNR,
+      </if>
+      <if test="rueck != null">
+        RUECK,
+      </if>
+      <if test="rmzhl != null">
+        RMZHL,
+      </if>
+      <if test="vornr != null">
+        VORNR,
+      </if>
+      <if test="pernr != null">
+        PERNR,
+      </if>
+      <if test="ersda != null">
+        ERSDA,
+      </if>
+      <if test="laeda != null">
+        LAEDA,
+      </if>
+      <if test="nachn != null">
+        NACHN,
+      </if>
+      <if test="vorna != null">
+        VORNA,
+      </if>
+      <if test="ismnw != null">
+        ISMNW,
+      </if>
+      <if test="ismne != null">
+        ISMNE,
+      </if>
+      <if test="stokz != null">
+        STOKZ,
+      </if>
+      <if test="stzhl != null">
+        STZHL,
+      </if>
+      <if test="arbpl != null">
+        ARBPL,
+      </if>
+      <if test="ltxa1 != null">
+        LTXA1,
+      </if>
+      <if test="remark != null">
+        Remark,
+      </if>
+      <if test="ltxa2 != null">
+        LTXA2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="wtid != null">
+        #{wtid,jdbcType=INTEGER},
+      </if>
+      <if test="aufnr != null">
+        #{aufnr,jdbcType=VARCHAR},
+      </if>
+      <if test="rueck != null">
+        #{rueck,jdbcType=VARCHAR},
+      </if>
+      <if test="rmzhl != null">
+        #{rmzhl,jdbcType=VARCHAR},
+      </if>
+      <if test="vornr != null">
+        #{vornr,jdbcType=VARCHAR},
+      </if>
+      <if test="pernr != null">
+        #{pernr,jdbcType=VARCHAR},
+      </if>
+      <if test="ersda != null">
+        #{ersda,jdbcType=VARCHAR},
+      </if>
+      <if test="laeda != null">
+        #{laeda,jdbcType=VARCHAR},
+      </if>
+      <if test="nachn != null">
+        #{nachn,jdbcType=VARCHAR},
+      </if>
+      <if test="vorna != null">
+        #{vorna,jdbcType=VARCHAR},
+      </if>
+      <if test="ismnw != null">
+        #{ismnw,jdbcType=VARCHAR},
+      </if>
+      <if test="ismne != null">
+        #{ismne,jdbcType=VARCHAR},
+      </if>
+      <if test="stokz != null">
+        #{stokz,jdbcType=VARCHAR},
+      </if>
+      <if test="stzhl != null">
+        #{stzhl,jdbcType=VARCHAR},
+      </if>
+      <if test="arbpl != null">
+        #{arbpl,jdbcType=VARCHAR},
+      </if>
+      <if test="ltxa1 != null">
+        #{ltxa1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="ltxa2 != null">
+        #{ltxa2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.byd.emg.pojo.ZCNIORDERACTWT">
+    update ZCNIORDERACTWT
+    <set>
+      <if test="aufnr != null">
+        AUFNR = #{aufnr,jdbcType=VARCHAR},
+      </if>
+      <if test="rueck != null">
+        RUECK = #{rueck,jdbcType=VARCHAR},
+      </if>
+      <if test="rmzhl != null">
+        RMZHL = #{rmzhl,jdbcType=VARCHAR},
+      </if>
+      <if test="vornr != null">
+        VORNR = #{vornr,jdbcType=VARCHAR},
+      </if>
+      <if test="pernr != null">
+        PERNR = #{pernr,jdbcType=VARCHAR},
+      </if>
+      <if test="ersda != null">
+        ERSDA = #{ersda,jdbcType=VARCHAR},
+      </if>
+      <if test="laeda != null">
+        LAEDA = #{laeda,jdbcType=VARCHAR},
+      </if>
+      <if test="nachn != null">
+        NACHN = #{nachn,jdbcType=VARCHAR},
+      </if>
+      <if test="vorna != null">
+        VORNA = #{vorna,jdbcType=VARCHAR},
+      </if>
+      <if test="ismnw != null">
+        ISMNW = #{ismnw,jdbcType=VARCHAR},
+      </if>
+      <if test="ismne != null">
+        ISMNE = #{ismne,jdbcType=VARCHAR},
+      </if>
+      <if test="stokz != null">
+        STOKZ = #{stokz,jdbcType=VARCHAR},
+      </if>
+      <if test="stzhl != null">
+        STZHL = #{stzhl,jdbcType=VARCHAR},
+      </if>
+      <if test="arbpl != null">
+        ARBPL = #{arbpl,jdbcType=VARCHAR},
+      </if>
+      <if test="ltxa1 != null">
+        LTXA1 = #{ltxa1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="ltxa2 != null">
+        LTXA2 = #{ltxa2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where WTID = #{wtid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.byd.emg.pojo.ZCNIORDERACTWT">
+    update ZCNIORDERACTWT
+    set AUFNR = #{aufnr,jdbcType=VARCHAR},
+      RUECK = #{rueck,jdbcType=VARCHAR},
+      RMZHL = #{rmzhl,jdbcType=VARCHAR},
+      VORNR = #{vornr,jdbcType=VARCHAR},
+      PERNR = #{pernr,jdbcType=VARCHAR},
+      ERSDA = #{ersda,jdbcType=VARCHAR},
+      LAEDA = #{laeda,jdbcType=VARCHAR},
+      NACHN = #{nachn,jdbcType=VARCHAR},
+      VORNA = #{vorna,jdbcType=VARCHAR},
+      ISMNW = #{ismnw,jdbcType=VARCHAR},
+      ISMNE = #{ismne,jdbcType=VARCHAR},
+      STOKZ = #{stokz,jdbcType=VARCHAR},
+      STZHL = #{stzhl,jdbcType=VARCHAR},
+      ARBPL = #{arbpl,jdbcType=VARCHAR},
+      LTXA1 = #{ltxa1,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR},
+      LTXA2 = #{ltxa2,jdbcType=VARCHAR}
+    where WTID = #{wtid,jdbcType=INTEGER}
+  </update>
+</mapper>

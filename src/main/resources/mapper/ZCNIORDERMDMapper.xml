@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.byd.emg.mapper.ZCNIORDERMDMapper">
+  <resultMap id="BaseResultMap" type="com.byd.emg.pojo.ZCNIORDERMD">
+    <id column="MDID" jdbcType="INTEGER" property="mdid" />
+    <result column="AUFNR" jdbcType="VARCHAR" property="aufnr" />
+    <result column="ERDAT" jdbcType="VARCHAR" property="erdat" />
+    <result column="AEDAT" jdbcType="VARCHAR" property="aedat" />
+    <result column="AUART" jdbcType="VARCHAR" property="auart" />
+    <result column="KTEXT" jdbcType="VARCHAR" property="ktext" />
+    <result column="VAPLZ" jdbcType="VARCHAR" property="vaplz" />
+    <result column="WERKS" jdbcType="VARCHAR" property="werks" />
+    <result column="BUKRS" jdbcType="VARCHAR" property="bukrs" />
+    <result column="KOSTL" jdbcType="VARCHAR" property="kostl" />
+    <result column="IDAT2" jdbcType="VARCHAR" property="idat2" />
+    <result column="GSTRP" jdbcType="VARCHAR" property="gstrp" />
+    <result column="GLTRP" jdbcType="VARCHAR" property="gltrp" />
+    <result column="GSTRI" jdbcType="VARCHAR" property="gstri" />
+    <result column="GETRI" jdbcType="VARCHAR" property="getri" />
+    <result column="FTRMI" jdbcType="VARCHAR" property="ftrmi" />
+    <result column="INGPR" jdbcType="VARCHAR" property="ingpr" />
+    <result column="APGRP" jdbcType="VARCHAR" property="apgrp" />
+    <result column="ILART" jdbcType="VARCHAR" property="ilart" />
+    <result column="ANLZU" jdbcType="VARCHAR" property="anlzu" />
+    <result column="PRIOK" jdbcType="VARCHAR" property="priok" />
+    <result column="WARPL" jdbcType="VARCHAR" property="warpl" />
+    <result column="LAUFN" jdbcType="VARCHAR" property="laufn" />
+    <result column="QMNUM" jdbcType="VARCHAR" property="qmnum" />
+    <result column="ADDAT" jdbcType="VARCHAR" property="addat" />
+    <result column="ADUHR" jdbcType="VARCHAR" property="aduhr" />
+    <result column="DMBTR" jdbcType="VARCHAR" property="dmbtr" />
+    <result column="WAERS" jdbcType="VARCHAR" property="waers" />
+    <result column="STTXT" jdbcType="VARCHAR" property="sttxt" />
+    <result column="UTTXT" jdbcType="VARCHAR" property="uttxt" />
+    <result column="TPLNR" jdbcType="VARCHAR" property="tplnr" />
+    <result column="Remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    MDID, AUFNR, ERDAT, AEDAT, AUART, KTEXT, VAPLZ, WERKS, BUKRS, KOSTL, IDAT2, GSTRP, 
+    GLTRP, GSTRI, GETRI, FTRMI, INGPR, APGRP, ILART, ANLZU, PRIOK, WARPL, LAUFN, QMNUM, 
+    ADDAT, ADUHR, DMBTR, WAERS, STTXT, UTTXT, TPLNR, Remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZCNIORDERMD
+    where MDID = #{mdid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ZCNIORDERMD
+    where MDID = #{mdid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.byd.emg.pojo.ZCNIORDERMD">
+    insert into ZCNIORDERMD (MDID, AUFNR, ERDAT, 
+      AEDAT, AUART, KTEXT, 
+      VAPLZ, WERKS, BUKRS, 
+      KOSTL, IDAT2, GSTRP, 
+      GLTRP, GSTRI, GETRI, 
+      FTRMI, INGPR, APGRP, 
+      ILART, ANLZU, PRIOK, 
+      WARPL, LAUFN, QMNUM, 
+      ADDAT, ADUHR, DMBTR, 
+      WAERS, STTXT, UTTXT, 
+      TPLNR, Remark)
+    values (#{mdid,jdbcType=INTEGER}, #{aufnr,jdbcType=VARCHAR}, #{erdat,jdbcType=VARCHAR}, 
+      #{aedat,jdbcType=VARCHAR}, #{auart,jdbcType=VARCHAR}, #{ktext,jdbcType=VARCHAR}, 
+      #{vaplz,jdbcType=VARCHAR}, #{werks,jdbcType=VARCHAR}, #{bukrs,jdbcType=VARCHAR}, 
+      #{kostl,jdbcType=VARCHAR}, #{idat2,jdbcType=VARCHAR}, #{gstrp,jdbcType=VARCHAR}, 
+      #{gltrp,jdbcType=VARCHAR}, #{gstri,jdbcType=VARCHAR}, #{getri,jdbcType=VARCHAR}, 
+      #{ftrmi,jdbcType=VARCHAR}, #{ingpr,jdbcType=VARCHAR}, #{apgrp,jdbcType=VARCHAR}, 
+      #{ilart,jdbcType=VARCHAR}, #{anlzu,jdbcType=VARCHAR}, #{priok,jdbcType=VARCHAR}, 
+      #{warpl,jdbcType=VARCHAR}, #{laufn,jdbcType=VARCHAR}, #{qmnum,jdbcType=VARCHAR}, 
+      #{addat,jdbcType=VARCHAR}, #{aduhr,jdbcType=VARCHAR}, #{dmbtr,jdbcType=VARCHAR}, 
+      #{waers,jdbcType=VARCHAR}, #{sttxt,jdbcType=VARCHAR}, #{uttxt,jdbcType=VARCHAR}, 
+      #{tplnr,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.byd.emg.pojo.ZCNIORDERMD">
+    insert into ZCNIORDERMD
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mdid != null">
+        MDID,
+      </if>
+      <if test="aufnr != null">
+        AUFNR,
+      </if>
+      <if test="erdat != null">
+        ERDAT,
+      </if>
+      <if test="aedat != null">
+        AEDAT,
+      </if>
+      <if test="auart != null">
+        AUART,
+      </if>
+      <if test="ktext != null">
+        KTEXT,
+      </if>
+      <if test="vaplz != null">
+        VAPLZ,
+      </if>
+      <if test="werks != null">
+        WERKS,
+      </if>
+      <if test="bukrs != null">
+        BUKRS,
+      </if>
+      <if test="kostl != null">
+        KOSTL,
+      </if>
+      <if test="idat2 != null">
+        IDAT2,
+      </if>
+      <if test="gstrp != null">
+        GSTRP,
+      </if>
+      <if test="gltrp != null">
+        GLTRP,
+      </if>
+      <if test="gstri != null">
+        GSTRI,
+      </if>
+      <if test="getri != null">
+        GETRI,
+      </if>
+      <if test="ftrmi != null">
+        FTRMI,
+      </if>
+      <if test="ingpr != null">
+        INGPR,
+      </if>
+      <if test="apgrp != null">
+        APGRP,
+      </if>
+      <if test="ilart != null">
+        ILART,
+      </if>
+      <if test="anlzu != null">
+        ANLZU,
+      </if>
+      <if test="priok != null">
+        PRIOK,
+      </if>
+      <if test="warpl != null">
+        WARPL,
+      </if>
+      <if test="laufn != null">
+        LAUFN,
+      </if>
+      <if test="qmnum != null">
+        QMNUM,
+      </if>
+      <if test="addat != null">
+        ADDAT,
+      </if>
+      <if test="aduhr != null">
+        ADUHR,
+      </if>
+      <if test="dmbtr != null">
+        DMBTR,
+      </if>
+      <if test="waers != null">
+        WAERS,
+      </if>
+      <if test="sttxt != null">
+        STTXT,
+      </if>
+      <if test="uttxt != null">
+        UTTXT,
+      </if>
+      <if test="tplnr != null">
+        TPLNR,
+      </if>
+      <if test="remark != null">
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mdid != null">
+        #{mdid,jdbcType=INTEGER},
+      </if>
+      <if test="aufnr != null">
+        #{aufnr,jdbcType=VARCHAR},
+      </if>
+      <if test="erdat != null">
+        #{erdat,jdbcType=VARCHAR},
+      </if>
+      <if test="aedat != null">
+        #{aedat,jdbcType=VARCHAR},
+      </if>
+      <if test="auart != null">
+        #{auart,jdbcType=VARCHAR},
+      </if>
+      <if test="ktext != null">
+        #{ktext,jdbcType=VARCHAR},
+      </if>
+      <if test="vaplz != null">
+        #{vaplz,jdbcType=VARCHAR},
+      </if>
+      <if test="werks != null">
+        #{werks,jdbcType=VARCHAR},
+      </if>
+      <if test="bukrs != null">
+        #{bukrs,jdbcType=VARCHAR},
+      </if>
+      <if test="kostl != null">
+        #{kostl,jdbcType=VARCHAR},
+      </if>
+      <if test="idat2 != null">
+        #{idat2,jdbcType=VARCHAR},
+      </if>
+      <if test="gstrp != null">
+        #{gstrp,jdbcType=VARCHAR},
+      </if>
+      <if test="gltrp != null">
+        #{gltrp,jdbcType=VARCHAR},
+      </if>
+      <if test="gstri != null">
+        #{gstri,jdbcType=VARCHAR},
+      </if>
+      <if test="getri != null">
+        #{getri,jdbcType=VARCHAR},
+      </if>
+      <if test="ftrmi != null">
+        #{ftrmi,jdbcType=VARCHAR},
+      </if>
+      <if test="ingpr != null">
+        #{ingpr,jdbcType=VARCHAR},
+      </if>
+      <if test="apgrp != null">
+        #{apgrp,jdbcType=VARCHAR},
+      </if>
+      <if test="ilart != null">
+        #{ilart,jdbcType=VARCHAR},
+      </if>
+      <if test="anlzu != null">
+        #{anlzu,jdbcType=VARCHAR},
+      </if>
+      <if test="priok != null">
+        #{priok,jdbcType=VARCHAR},
+      </if>
+      <if test="warpl != null">
+        #{warpl,jdbcType=VARCHAR},
+      </if>
+      <if test="laufn != null">
+        #{laufn,jdbcType=VARCHAR},
+      </if>
+      <if test="qmnum != null">
+        #{qmnum,jdbcType=VARCHAR},
+      </if>
+      <if test="addat != null">
+        #{addat,jdbcType=VARCHAR},
+      </if>
+      <if test="aduhr != null">
+        #{aduhr,jdbcType=VARCHAR},
+      </if>
+      <if test="dmbtr != null">
+        #{dmbtr,jdbcType=VARCHAR},
+      </if>
+      <if test="waers != null">
+        #{waers,jdbcType=VARCHAR},
+      </if>
+      <if test="sttxt != null">
+        #{sttxt,jdbcType=VARCHAR},
+      </if>
+      <if test="uttxt != null">
+        #{uttxt,jdbcType=VARCHAR},
+      </if>
+      <if test="tplnr != null">
+        #{tplnr,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.byd.emg.pojo.ZCNIORDERMD">
+    update ZCNIORDERMD
+    <set>
+      <if test="aufnr != null">
+        AUFNR = #{aufnr,jdbcType=VARCHAR},
+      </if>
+      <if test="erdat != null">
+        ERDAT = #{erdat,jdbcType=VARCHAR},
+      </if>
+      <if test="aedat != null">
+        AEDAT = #{aedat,jdbcType=VARCHAR},
+      </if>
+      <if test="auart != null">
+        AUART = #{auart,jdbcType=VARCHAR},
+      </if>
+      <if test="ktext != null">
+        KTEXT = #{ktext,jdbcType=VARCHAR},
+      </if>
+      <if test="vaplz != null">
+        VAPLZ = #{vaplz,jdbcType=VARCHAR},
+      </if>
+      <if test="werks != null">
+        WERKS = #{werks,jdbcType=VARCHAR},
+      </if>
+      <if test="bukrs != null">
+        BUKRS = #{bukrs,jdbcType=VARCHAR},
+      </if>
+      <if test="kostl != null">
+        KOSTL = #{kostl,jdbcType=VARCHAR},
+      </if>
+      <if test="idat2 != null">
+        IDAT2 = #{idat2,jdbcType=VARCHAR},
+      </if>
+      <if test="gstrp != null">
+        GSTRP = #{gstrp,jdbcType=VARCHAR},
+      </if>
+      <if test="gltrp != null">
+        GLTRP = #{gltrp,jdbcType=VARCHAR},
+      </if>
+      <if test="gstri != null">
+        GSTRI = #{gstri,jdbcType=VARCHAR},
+      </if>
+      <if test="getri != null">
+        GETRI = #{getri,jdbcType=VARCHAR},
+      </if>
+      <if test="ftrmi != null">
+        FTRMI = #{ftrmi,jdbcType=VARCHAR},
+      </if>
+      <if test="ingpr != null">
+        INGPR = #{ingpr,jdbcType=VARCHAR},
+      </if>
+      <if test="apgrp != null">
+        APGRP = #{apgrp,jdbcType=VARCHAR},
+      </if>
+      <if test="ilart != null">
+        ILART = #{ilart,jdbcType=VARCHAR},
+      </if>
+      <if test="anlzu != null">
+        ANLZU = #{anlzu,jdbcType=VARCHAR},
+      </if>
+      <if test="priok != null">
+        PRIOK = #{priok,jdbcType=VARCHAR},
+      </if>
+      <if test="warpl != null">
+        WARPL = #{warpl,jdbcType=VARCHAR},
+      </if>
+      <if test="laufn != null">
+        LAUFN = #{laufn,jdbcType=VARCHAR},
+      </if>
+      <if test="qmnum != null">
+        QMNUM = #{qmnum,jdbcType=VARCHAR},
+      </if>
+      <if test="addat != null">
+        ADDAT = #{addat,jdbcType=VARCHAR},
+      </if>
+      <if test="aduhr != null">
+        ADUHR = #{aduhr,jdbcType=VARCHAR},
+      </if>
+      <if test="dmbtr != null">
+        DMBTR = #{dmbtr,jdbcType=VARCHAR},
+      </if>
+      <if test="waers != null">
+        WAERS = #{waers,jdbcType=VARCHAR},
+      </if>
+      <if test="sttxt != null">
+        STTXT = #{sttxt,jdbcType=VARCHAR},
+      </if>
+      <if test="uttxt != null">
+        UTTXT = #{uttxt,jdbcType=VARCHAR},
+      </if>
+      <if test="tplnr != null">
+        TPLNR = #{tplnr,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where MDID = #{mdid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.byd.emg.pojo.ZCNIORDERMD">
+    update ZCNIORDERMD
+    set AUFNR = #{aufnr,jdbcType=VARCHAR},
+      ERDAT = #{erdat,jdbcType=VARCHAR},
+      AEDAT = #{aedat,jdbcType=VARCHAR},
+      AUART = #{auart,jdbcType=VARCHAR},
+      KTEXT = #{ktext,jdbcType=VARCHAR},
+      VAPLZ = #{vaplz,jdbcType=VARCHAR},
+      WERKS = #{werks,jdbcType=VARCHAR},
+      BUKRS = #{bukrs,jdbcType=VARCHAR},
+      KOSTL = #{kostl,jdbcType=VARCHAR},
+      IDAT2 = #{idat2,jdbcType=VARCHAR},
+      GSTRP = #{gstrp,jdbcType=VARCHAR},
+      GLTRP = #{gltrp,jdbcType=VARCHAR},
+      GSTRI = #{gstri,jdbcType=VARCHAR},
+      GETRI = #{getri,jdbcType=VARCHAR},
+      FTRMI = #{ftrmi,jdbcType=VARCHAR},
+      INGPR = #{ingpr,jdbcType=VARCHAR},
+      APGRP = #{apgrp,jdbcType=VARCHAR},
+      ILART = #{ilart,jdbcType=VARCHAR},
+      ANLZU = #{anlzu,jdbcType=VARCHAR},
+      PRIOK = #{priok,jdbcType=VARCHAR},
+      WARPL = #{warpl,jdbcType=VARCHAR},
+      LAUFN = #{laufn,jdbcType=VARCHAR},
+      QMNUM = #{qmnum,jdbcType=VARCHAR},
+      ADDAT = #{addat,jdbcType=VARCHAR},
+      ADUHR = #{aduhr,jdbcType=VARCHAR},
+      DMBTR = #{dmbtr,jdbcType=VARCHAR},
+      WAERS = #{waers,jdbcType=VARCHAR},
+      STTXT = #{sttxt,jdbcType=VARCHAR},
+      UTTXT = #{uttxt,jdbcType=VARCHAR},
+      TPLNR = #{tplnr,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where MDID = #{mdid,jdbcType=INTEGER}
+  </update>
+</mapper>

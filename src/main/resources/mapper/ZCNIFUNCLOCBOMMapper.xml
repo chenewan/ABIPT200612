@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.byd.emg.mapper.ZCNIFUNCLOCBOMMapper">
+  <resultMap id="BaseResultMap" type="com.byd.emg.pojo.ZCNIFUNCLOCBOM">
+    <id column="BOMID" jdbcType="INTEGER" property="bomid" />
+    <result column="WERKS" jdbcType="VARCHAR" property="werks" />
+    <result column="TPLNR" jdbcType="VARCHAR" property="tplnr" />
+    <result column="POSNR" jdbcType="VARCHAR" property="posnr" />
+    <result column="IDNRK" jdbcType="VARCHAR" property="idnrk" />
+    <result column="MENGE" jdbcType="VARCHAR" property="menge" />
+    <result column="MEINS" jdbcType="VARCHAR" property="meins" />
+    <result column="ANDAT_TPST" jdbcType="VARCHAR" property="andatTpst" />
+    <result column="AEDAT_TPST" jdbcType="VARCHAR" property="aedatTpst" />
+    <result column="ANDAT_STPO" jdbcType="VARCHAR" property="andatStpo" />
+    <result column="AEDAT_STPO" jdbcType="VARCHAR" property="aedatStpo" />
+    <result column="Remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    BOMID, WERKS, TPLNR, POSNR, IDNRK, MENGE, MEINS, ANDAT_TPST, AEDAT_TPST, ANDAT_STPO, 
+    AEDAT_STPO, Remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZCNIFUNCLOCBOM
+    where BOMID = #{bomid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ZCNIFUNCLOCBOM
+    where BOMID = #{bomid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.byd.emg.pojo.ZCNIFUNCLOCBOM">
+    insert into ZCNIFUNCLOCBOM (BOMID, WERKS, TPLNR, 
+      POSNR, IDNRK, MENGE, 
+      MEINS, ANDAT_TPST, AEDAT_TPST, 
+      ANDAT_STPO, AEDAT_STPO, Remark
+      )
+    values (#{bomid,jdbcType=INTEGER}, #{werks,jdbcType=VARCHAR}, #{tplnr,jdbcType=VARCHAR}, 
+      #{posnr,jdbcType=VARCHAR}, #{idnrk,jdbcType=VARCHAR}, #{menge,jdbcType=VARCHAR}, 
+      #{meins,jdbcType=VARCHAR}, #{andatTpst,jdbcType=VARCHAR}, #{aedatTpst,jdbcType=VARCHAR}, 
+      #{andatStpo,jdbcType=VARCHAR}, #{aedatStpo,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.byd.emg.pojo.ZCNIFUNCLOCBOM">
+
+    IF NOT exists(SELECT TOP 1 * FROM ZCNIFUNCLOCBOM
+    WHERE WERKS = #{werks,jdbcType=VARCHAR}
+    AND TPLNR = #{tplnr,jdbcType=VARCHAR}
+    AND POSNR = #{posnr,jdbcType=VARCHAR})
+    insert into ZCNIFUNCLOCBOM ( WERKS, TPLNR,
+      POSNR, IDNRK, MENGE,
+      MEINS, ANDAT_TPST, AEDAT_TPST,
+      ANDAT_STPO, AEDAT_STPO
+      )
+    values (#{werks,jdbcType=VARCHAR}, #{tplnr,jdbcType=VARCHAR},
+      #{posnr,jdbcType=VARCHAR}, #{idnrk,jdbcType=VARCHAR}, #{menge,jdbcType=VARCHAR},
+      #{meins,jdbcType=VARCHAR}, #{andatTpst,jdbcType=VARCHAR}, #{aedatTpst,jdbcType=VARCHAR},
+      #{andatStpo,jdbcType=VARCHAR}, #{aedatStpo,jdbcType=VARCHAR}
+      )
+    ELSE
+    update ZCNIFUNCLOCBOM
+    set WERKS = #{werks,jdbcType=VARCHAR},
+      TPLNR = #{tplnr,jdbcType=VARCHAR},
+      POSNR = #{posnr,jdbcType=VARCHAR},
+      IDNRK = #{idnrk,jdbcType=VARCHAR},
+      MENGE = #{menge,jdbcType=VARCHAR},
+      MEINS = #{meins,jdbcType=VARCHAR},
+      ANDAT_TPST = #{andatTpst,jdbcType=VARCHAR},
+      AEDAT_TPST = #{aedatTpst,jdbcType=VARCHAR},
+      ANDAT_STPO = #{andatStpo,jdbcType=VARCHAR},
+      AEDAT_STPO = #{aedatStpo,jdbcType=VARCHAR}
+    where WERKS = #{werks,jdbcType=VARCHAR}
+    AND TPLNR = #{tplnr,jdbcType=VARCHAR}
+    AND POSNR = #{posnr,jdbcType=VARCHAR}
+
+
+    IF NOT exists(SELECT TOP 1 * FROM bomsparepart
+    WHERE functionallocation = #{tplnr,jdbcType=VARCHAR}
+    AND [no] = #{posnr,jdbcType=VARCHAR}
+    AND material = #{idnrk,jdbcType=VARCHAR})
+    insert into bomsparepart ([functionallocation]
+           ,[no]
+           ,[material]
+      )
+    values (#{tplnr,jdbcType=VARCHAR},
+      #{posnr,jdbcType=VARCHAR}, #{idnrk,jdbcType=VARCHAR}
+      )
+    ELSE
+    update bomsparepart
+    set functionallocation = #{tplnr,jdbcType=VARCHAR},
+      [no] = #{posnr,jdbcType=VARCHAR},
+      material = #{idnrk,jdbcType=VARCHAR}
+    WHERE functionallocation = #{tplnr,jdbcType=VARCHAR}
+    AND [no] = #{posnr,jdbcType=VARCHAR}
+    AND material = #{idnrk,jdbcType=VARCHAR}
+
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.byd.emg.pojo.ZCNIFUNCLOCBOM">
+    update ZCNIFUNCLOCBOM
+    <set>
+      <if test="werks != null">
+        WERKS = #{werks,jdbcType=VARCHAR},
+      </if>
+      <if test="tplnr != null">
+        TPLNR = #{tplnr,jdbcType=VARCHAR},
+      </if>
+      <if test="posnr != null">
+        POSNR = #{posnr,jdbcType=VARCHAR},
+      </if>
+      <if test="idnrk != null">
+        IDNRK = #{idnrk,jdbcType=VARCHAR},
+      </if>
+      <if test="menge != null">
+        MENGE = #{menge,jdbcType=VARCHAR},
+      </if>
+      <if test="meins != null">
+        MEINS = #{meins,jdbcType=VARCHAR},
+      </if>
+      <if test="andatTpst != null">
+        ANDAT_TPST = #{andatTpst,jdbcType=VARCHAR},
+      </if>
+      <if test="aedatTpst != null">
+        AEDAT_TPST = #{aedatTpst,jdbcType=VARCHAR},
+      </if>
+      <if test="andatStpo != null">
+        ANDAT_STPO = #{andatStpo,jdbcType=VARCHAR},
+      </if>
+      <if test="aedatStpo != null">
+        AEDAT_STPO = #{aedatStpo,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where BOMID = #{bomid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.byd.emg.pojo.ZCNIFUNCLOCBOM">
+    update ZCNIFUNCLOCBOM
+    set WERKS = #{werks,jdbcType=VARCHAR},
+      TPLNR = #{tplnr,jdbcType=VARCHAR},
+      POSNR = #{posnr,jdbcType=VARCHAR},
+      IDNRK = #{idnrk,jdbcType=VARCHAR},
+      MENGE = #{menge,jdbcType=VARCHAR},
+      MEINS = #{meins,jdbcType=VARCHAR},
+      ANDAT_TPST = #{andatTpst,jdbcType=VARCHAR},
+      AEDAT_TPST = #{aedatTpst,jdbcType=VARCHAR},
+      ANDAT_STPO = #{andatStpo,jdbcType=VARCHAR},
+      AEDAT_STPO = #{aedatStpo,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where BOMID = #{bomid,jdbcType=INTEGER}
+  </update>
+</mapper>

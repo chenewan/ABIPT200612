@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.byd.emg.mapper.ZCNIMATCHARMapper">
+  <resultMap id="BaseResultMap" type="com.byd.emg.pojo.ZCNIMATCHAR">
+    <id column="CHARID" jdbcType="INTEGER" property="charid" />
+    <result column="MATNR" jdbcType="VARCHAR" property="matnr" />
+    <result column="CLASS" jdbcType="VARCHAR" property="class" />
+    <result column="ATNAM" jdbcType="VARCHAR" property="atnam" />
+    <result column="KSCHL" jdbcType="VARCHAR" property="kschl" />
+    <result column="ATBEZ" jdbcType="VARCHAR" property="atbez" />
+    <result column="ATWRT" jdbcType="VARCHAR" property="atwrt" />
+    <result column="ERSDA" jdbcType="VARCHAR" property="ersda" />
+    <result column="LAEDA" jdbcType="VARCHAR" property="laeda" />
+    <result column="Remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CHARID, MATNR, CLASS, ATNAM, KSCHL, ATBEZ, ATWRT, ERSDA, LAEDA, Remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZCNIMATCHAR
+    where CHARID = #{charid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ZCNIMATCHAR
+    where CHARID = #{charid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.byd.emg.pojo.ZCNIMATCHAR">
+    insert into ZCNIMATCHAR (CHARID, MATNR, CLASS, 
+      ATNAM, KSCHL, ATBEZ, 
+      ATWRT, ERSDA, LAEDA, 
+      Remark)
+    values (#{charid,jdbcType=INTEGER}, #{matnr,jdbcType=VARCHAR}, #{class,jdbcType=VARCHAR}, 
+      #{atnam,jdbcType=VARCHAR}, #{kschl,jdbcType=VARCHAR}, #{atbez,jdbcType=VARCHAR}, 
+      #{atwrt,jdbcType=VARCHAR}, #{ersda,jdbcType=VARCHAR}, #{laeda,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.byd.emg.pojo.ZCNIMATCHAR">
+    insert into ZCNIMATCHAR
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="charid != null">
+        CHARID,
+      </if>
+      <if test="matnr != null">
+        MATNR,
+      </if>
+      <if test="class != null">
+        CLASS,
+      </if>
+      <if test="atnam != null">
+        ATNAM,
+      </if>
+      <if test="kschl != null">
+        KSCHL,
+      </if>
+      <if test="atbez != null">
+        ATBEZ,
+      </if>
+      <if test="atwrt != null">
+        ATWRT,
+      </if>
+      <if test="ersda != null">
+        ERSDA,
+      </if>
+      <if test="laeda != null">
+        LAEDA,
+      </if>
+      <if test="remark != null">
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="charid != null">
+        #{charid,jdbcType=INTEGER},
+      </if>
+      <if test="matnr != null">
+        #{matnr,jdbcType=VARCHAR},
+      </if>
+      <if test="class != null">
+        #{class,jdbcType=VARCHAR},
+      </if>
+      <if test="atnam != null">
+        #{atnam,jdbcType=VARCHAR},
+      </if>
+      <if test="kschl != null">
+        #{kschl,jdbcType=VARCHAR},
+      </if>
+      <if test="atbez != null">
+        #{atbez,jdbcType=VARCHAR},
+      </if>
+      <if test="atwrt != null">
+        #{atwrt,jdbcType=VARCHAR},
+      </if>
+      <if test="ersda != null">
+        #{ersda,jdbcType=VARCHAR},
+      </if>
+      <if test="laeda != null">
+        #{laeda,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.byd.emg.pojo.ZCNIMATCHAR">
+    update ZCNIMATCHAR
+    <set>
+      <if test="matnr != null">
+        MATNR = #{matnr,jdbcType=VARCHAR},
+      </if>
+      <if test="class != null">
+        CLASS = #{class,jdbcType=VARCHAR},
+      </if>
+      <if test="atnam != null">
+        ATNAM = #{atnam,jdbcType=VARCHAR},
+      </if>
+      <if test="kschl != null">
+        KSCHL = #{kschl,jdbcType=VARCHAR},
+      </if>
+      <if test="atbez != null">
+        ATBEZ = #{atbez,jdbcType=VARCHAR},
+      </if>
+      <if test="atwrt != null">
+        ATWRT = #{atwrt,jdbcType=VARCHAR},
+      </if>
+      <if test="ersda != null">
+        ERSDA = #{ersda,jdbcType=VARCHAR},
+      </if>
+      <if test="laeda != null">
+        LAEDA = #{laeda,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CHARID = #{charid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.byd.emg.pojo.ZCNIMATCHAR">
+    update ZCNIMATCHAR
+    set MATNR = #{matnr,jdbcType=VARCHAR},
+      CLASS = #{class,jdbcType=VARCHAR},
+      ATNAM = #{atnam,jdbcType=VARCHAR},
+      KSCHL = #{kschl,jdbcType=VARCHAR},
+      ATBEZ = #{atbez,jdbcType=VARCHAR},
+      ATWRT = #{atwrt,jdbcType=VARCHAR},
+      ERSDA = #{ersda,jdbcType=VARCHAR},
+      LAEDA = #{laeda,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where CHARID = #{charid,jdbcType=INTEGER}
+  </update>
+</mapper>

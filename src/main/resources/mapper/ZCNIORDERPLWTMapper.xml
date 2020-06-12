@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.byd.emg.mapper.ZCNIORDERPLWTMapper">
+  <resultMap id="BaseResultMap" type="com.byd.emg.pojo.ZCNIORDERPLWT">
+    <id column="PLWTID" jdbcType="INTEGER" property="plwtid" />
+    <result column="AUFNR" jdbcType="VARCHAR" property="aufnr" />
+    <result column="VORNR" jdbcType="VARCHAR" property="vornr" />
+    <result column="PERNR" jdbcType="VARCHAR" property="pernr" />
+    <result column="NACHN" jdbcType="VARCHAR" property="nachn" />
+    <result column="VORNA" jdbcType="VARCHAR" property="vorna" />
+    <result column="ARBEI" jdbcType="VARCHAR" property="arbei" />
+    <result column="ARBEH" jdbcType="VARCHAR" property="arbeh" />
+    <result column="ERDAT" jdbcType="VARCHAR" property="erdat" />
+    <result column="AEDAT" jdbcType="VARCHAR" property="aedat" />
+    <result column="Remark" jdbcType="CHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PLWTID, AUFNR, VORNR, PERNR, NACHN, VORNA, ARBEI, ARBEH, ERDAT, AEDAT, Remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZCNIORDERPLWT
+    where PLWTID = #{plwtid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ZCNIORDERPLWT
+    where PLWTID = #{plwtid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.byd.emg.pojo.ZCNIORDERPLWT">
+    insert into ZCNIORDERPLWT (PLWTID, AUFNR, VORNR, 
+      PERNR, NACHN, VORNA, 
+      ARBEI, ARBEH, ERDAT, 
+      AEDAT, Remark)
+    values (#{plwtid,jdbcType=INTEGER}, #{aufnr,jdbcType=VARCHAR}, #{vornr,jdbcType=VARCHAR}, 
+      #{pernr,jdbcType=VARCHAR}, #{nachn,jdbcType=VARCHAR}, #{vorna,jdbcType=VARCHAR}, 
+      #{arbei,jdbcType=VARCHAR}, #{arbeh,jdbcType=VARCHAR}, #{erdat,jdbcType=VARCHAR}, 
+      #{aedat,jdbcType=VARCHAR}, #{remark,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.byd.emg.pojo.ZCNIORDERPLWT">
+    insert into ZCNIORDERPLWT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="plwtid != null">
+        PLWTID,
+      </if>
+      <if test="aufnr != null">
+        AUFNR,
+      </if>
+      <if test="vornr != null">
+        VORNR,
+      </if>
+      <if test="pernr != null">
+        PERNR,
+      </if>
+      <if test="nachn != null">
+        NACHN,
+      </if>
+      <if test="vorna != null">
+        VORNA,
+      </if>
+      <if test="arbei != null">
+        ARBEI,
+      </if>
+      <if test="arbeh != null">
+        ARBEH,
+      </if>
+      <if test="erdat != null">
+        ERDAT,
+      </if>
+      <if test="aedat != null">
+        AEDAT,
+      </if>
+      <if test="remark != null">
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="plwtid != null">
+        #{plwtid,jdbcType=INTEGER},
+      </if>
+      <if test="aufnr != null">
+        #{aufnr,jdbcType=VARCHAR},
+      </if>
+      <if test="vornr != null">
+        #{vornr,jdbcType=VARCHAR},
+      </if>
+      <if test="pernr != null">
+        #{pernr,jdbcType=VARCHAR},
+      </if>
+      <if test="nachn != null">
+        #{nachn,jdbcType=VARCHAR},
+      </if>
+      <if test="vorna != null">
+        #{vorna,jdbcType=VARCHAR},
+      </if>
+      <if test="arbei != null">
+        #{arbei,jdbcType=VARCHAR},
+      </if>
+      <if test="arbeh != null">
+        #{arbeh,jdbcType=VARCHAR},
+      </if>
+      <if test="erdat != null">
+        #{erdat,jdbcType=VARCHAR},
+      </if>
+      <if test="aedat != null">
+        #{aedat,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.byd.emg.pojo.ZCNIORDERPLWT">
+    update ZCNIORDERPLWT
+    <set>
+      <if test="aufnr != null">
+        AUFNR = #{aufnr,jdbcType=VARCHAR},
+      </if>
+      <if test="vornr != null">
+        VORNR = #{vornr,jdbcType=VARCHAR},
+      </if>
+      <if test="pernr != null">
+        PERNR = #{pernr,jdbcType=VARCHAR},
+      </if>
+      <if test="nachn != null">
+        NACHN = #{nachn,jdbcType=VARCHAR},
+      </if>
+      <if test="vorna != null">
+        VORNA = #{vorna,jdbcType=VARCHAR},
+      </if>
+      <if test="arbei != null">
+        ARBEI = #{arbei,jdbcType=VARCHAR},
+      </if>
+      <if test="arbeh != null">
+        ARBEH = #{arbeh,jdbcType=VARCHAR},
+      </if>
+      <if test="erdat != null">
+        ERDAT = #{erdat,jdbcType=VARCHAR},
+      </if>
+      <if test="aedat != null">
+        AEDAT = #{aedat,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=CHAR},
+      </if>
+    </set>
+    where PLWTID = #{plwtid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.byd.emg.pojo.ZCNIORDERPLWT">
+    update ZCNIORDERPLWT
+    set AUFNR = #{aufnr,jdbcType=VARCHAR},
+      VORNR = #{vornr,jdbcType=VARCHAR},
+      PERNR = #{pernr,jdbcType=VARCHAR},
+      NACHN = #{nachn,jdbcType=VARCHAR},
+      VORNA = #{vorna,jdbcType=VARCHAR},
+      ARBEI = #{arbei,jdbcType=VARCHAR},
+      ARBEH = #{arbeh,jdbcType=VARCHAR},
+      ERDAT = #{erdat,jdbcType=VARCHAR},
+      AEDAT = #{aedat,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=CHAR}
+    where PLWTID = #{plwtid,jdbcType=INTEGER}
+  </update>
+</mapper>

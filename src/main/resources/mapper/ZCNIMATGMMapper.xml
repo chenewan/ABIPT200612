@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.byd.emg.mapper.ZCNIMATGMMapper">
+  <resultMap id="BaseResultMap" type="com.byd.emg.pojo.ZCNIMATGM">
+    <id column="GMID" jdbcType="INTEGER" property="gmid" />
+    <result column="MBLNR" jdbcType="VARCHAR" property="mblnr" />
+    <result column="MJAHR" jdbcType="VARCHAR" property="mjahr" />
+    <result column="ZEILE" jdbcType="VARCHAR" property="zeile" />
+    <result column="BUDAT" jdbcType="VARCHAR" property="budat" />
+    <result column="CPUDT" jdbcType="VARCHAR" property="cpudt" />
+    <result column="CPUTM" jdbcType="VARCHAR" property="cputm" />
+    <result column="MATNR" jdbcType="VARCHAR" property="matnr" />
+    <result column="WERKS" jdbcType="VARCHAR" property="werks" />
+    <result column="LGORT" jdbcType="VARCHAR" property="lgort" />
+    <result column="BWART" jdbcType="VARCHAR" property="bwart" />
+    <result column="AUFNR" jdbcType="VARCHAR" property="aufnr" />
+    <result column="MENGE" jdbcType="VARCHAR" property="menge" />
+    <result column="MEINS" jdbcType="VARCHAR" property="meins" />
+    <result column="ERFMG" jdbcType="VARCHAR" property="erfmg" />
+    <result column="ERFME" jdbcType="VARCHAR" property="erfme" />
+    <result column="DMBTR" jdbcType="VARCHAR" property="dmbtr" />
+    <result column="WAERS" jdbcType="VARCHAR" property="waers" />
+    <result column="BWTAR" jdbcType="VARCHAR" property="bwtar" />
+    <result column="LFBJA" jdbcType="VARCHAR" property="lfbja" />
+    <result column="LFBNR" jdbcType="VARCHAR" property="lfbnr" />
+    <result column="LFPOS" jdbcType="VARCHAR" property="lfpos" />
+    <result column="Remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    GMID, MBLNR, MJAHR, ZEILE, BUDAT, CPUDT, CPUTM, MATNR, WERKS, LGORT, BWART, AUFNR, 
+    MENGE, MEINS, ERFMG, ERFME, DMBTR, WAERS, BWTAR, LFBJA, LFBNR, LFPOS, Remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZCNIMATGM
+    where GMID = #{gmid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ZCNIMATGM
+    where GMID = #{gmid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.byd.emg.pojo.ZCNIMATGM">
+    insert into ZCNIMATGM (GMID, MBLNR, MJAHR, 
+      ZEILE, BUDAT, CPUDT, 
+      CPUTM, MATNR, WERKS, 
+      LGORT, BWART, AUFNR, 
+      MENGE, MEINS, ERFMG, 
+      ERFME, DMBTR, WAERS, 
+      BWTAR, LFBJA, LFBNR, 
+      LFPOS, Remark)
+    values (#{gmid,jdbcType=INTEGER}, #{mblnr,jdbcType=VARCHAR}, #{mjahr,jdbcType=VARCHAR}, 
+      #{zeile,jdbcType=VARCHAR}, #{budat,jdbcType=VARCHAR}, #{cpudt,jdbcType=VARCHAR}, 
+      #{cputm,jdbcType=VARCHAR}, #{matnr,jdbcType=VARCHAR}, #{werks,jdbcType=VARCHAR}, 
+      #{lgort,jdbcType=VARCHAR}, #{bwart,jdbcType=VARCHAR}, #{aufnr,jdbcType=VARCHAR}, 
+      #{menge,jdbcType=VARCHAR}, #{meins,jdbcType=VARCHAR}, #{erfmg,jdbcType=VARCHAR}, 
+      #{erfme,jdbcType=VARCHAR}, #{dmbtr,jdbcType=VARCHAR}, #{waers,jdbcType=VARCHAR}, 
+      #{bwtar,jdbcType=VARCHAR}, #{lfbja,jdbcType=VARCHAR}, #{lfbnr,jdbcType=VARCHAR}, 
+      #{lfpos,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.byd.emg.pojo.ZCNIMATGM">
+
+    IF NOT exists(SELECT TOP 1 * FROM ZCNIMATGM
+    where MBLNR = #{mblnr,jdbcType=VARCHAR}
+    AND MJAHR = #{mjahr,jdbcType=VARCHAR}
+    AND ZEILE = #{zeile,jdbcType=VARCHAR})
+    insert into ZCNIMATGM ( MBLNR, MJAHR,
+      ZEILE, BUDAT, CPUDT,
+      CPUTM, MATNR, WERKS,
+      LGORT, BWART, AUFNR,
+      MENGE, MEINS, ERFMG,
+      ERFME, DMBTR, WAERS,
+      BWTAR, LFBJA, LFBNR,
+      LFPOS)
+    values ( #{mblnr,jdbcType=VARCHAR}, #{mjahr,jdbcType=VARCHAR},
+      #{zeile,jdbcType=VARCHAR}, #{budat,jdbcType=VARCHAR}, #{cpudt,jdbcType=VARCHAR},
+      #{cputm,jdbcType=VARCHAR}, #{matnr,jdbcType=VARCHAR}, #{werks,jdbcType=VARCHAR},
+      #{lgort,jdbcType=VARCHAR}, #{bwart,jdbcType=VARCHAR}, #{aufnr,jdbcType=VARCHAR},
+      #{menge,jdbcType=VARCHAR}, #{meins,jdbcType=VARCHAR}, #{erfmg,jdbcType=VARCHAR},
+      #{erfme,jdbcType=VARCHAR}, #{dmbtr,jdbcType=VARCHAR}, #{waers,jdbcType=VARCHAR},
+      #{bwtar,jdbcType=VARCHAR}, #{lfbja,jdbcType=VARCHAR}, #{lfbnr,jdbcType=VARCHAR},
+      #{lfpos,jdbcType=VARCHAR})
+    ELSE
+    update ZCNIMATGM
+    set MBLNR = #{mblnr,jdbcType=VARCHAR},
+      MJAHR = #{mjahr,jdbcType=VARCHAR},
+      ZEILE = #{zeile,jdbcType=VARCHAR},
+      BUDAT = #{budat,jdbcType=VARCHAR},
+      CPUDT = #{cpudt,jdbcType=VARCHAR},
+      CPUTM = #{cputm,jdbcType=VARCHAR},
+      MATNR = #{matnr,jdbcType=VARCHAR},
+      WERKS = #{werks,jdbcType=VARCHAR},
+      LGORT = #{lgort,jdbcType=VARCHAR},
+      BWART = #{bwart,jdbcType=VARCHAR},
+      AUFNR = #{aufnr,jdbcType=VARCHAR},
+      MENGE = #{menge,jdbcType=VARCHAR},
+      MEINS = #{meins,jdbcType=VARCHAR},
+      ERFMG = #{erfmg,jdbcType=VARCHAR},
+      ERFME = #{erfme,jdbcType=VARCHAR},
+      DMBTR = #{dmbtr,jdbcType=VARCHAR},
+      WAERS = #{waers,jdbcType=VARCHAR},
+      BWTAR = #{bwtar,jdbcType=VARCHAR},
+      LFBJA = #{lfbja,jdbcType=VARCHAR},
+      LFBNR = #{lfbnr,jdbcType=VARCHAR},
+      LFPOS = #{lfpos,jdbcType=VARCHAR}
+    where MBLNR = #{mblnr,jdbcType=VARCHAR}
+    AND MJAHR = #{mjahr,jdbcType=VARCHAR}
+    AND ZEILE = #{zeile,jdbcType=VARCHAR}
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.byd.emg.pojo.ZCNIMATGM">
+    update ZCNIMATGM
+    <set>
+      <if test="mblnr != null">
+        MBLNR = #{mblnr,jdbcType=VARCHAR},
+      </if>
+      <if test="mjahr != null">
+        MJAHR = #{mjahr,jdbcType=VARCHAR},
+      </if>
+      <if test="zeile != null">
+        ZEILE = #{zeile,jdbcType=VARCHAR},
+      </if>
+      <if test="budat != null">
+        BUDAT = #{budat,jdbcType=VARCHAR},
+      </if>
+      <if test="cpudt != null">
+        CPUDT = #{cpudt,jdbcType=VARCHAR},
+      </if>
+      <if test="cputm != null">
+        CPUTM = #{cputm,jdbcType=VARCHAR},
+      </if>
+      <if test="matnr != null">
+        MATNR = #{matnr,jdbcType=VARCHAR},
+      </if>
+      <if test="werks != null">
+        WERKS = #{werks,jdbcType=VARCHAR},
+      </if>
+      <if test="lgort != null">
+        LGORT = #{lgort,jdbcType=VARCHAR},
+      </if>
+      <if test="bwart != null">
+        BWART = #{bwart,jdbcType=VARCHAR},
+      </if>
+      <if test="aufnr != null">
+        AUFNR = #{aufnr,jdbcType=VARCHAR},
+      </if>
+      <if test="menge != null">
+        MENGE = #{menge,jdbcType=VARCHAR},
+      </if>
+      <if test="meins != null">
+        MEINS = #{meins,jdbcType=VARCHAR},
+      </if>
+      <if test="erfmg != null">
+        ERFMG = #{erfmg,jdbcType=VARCHAR},
+      </if>
+      <if test="erfme != null">
+        ERFME = #{erfme,jdbcType=VARCHAR},
+      </if>
+      <if test="dmbtr != null">
+        DMBTR = #{dmbtr,jdbcType=VARCHAR},
+      </if>
+      <if test="waers != null">
+        WAERS = #{waers,jdbcType=VARCHAR},
+      </if>
+      <if test="bwtar != null">
+        BWTAR = #{bwtar,jdbcType=VARCHAR},
+      </if>
+      <if test="lfbja != null">
+        LFBJA = #{lfbja,jdbcType=VARCHAR},
+      </if>
+      <if test="lfbnr != null">
+        LFBNR = #{lfbnr,jdbcType=VARCHAR},
+      </if>
+      <if test="lfpos != null">
+        LFPOS = #{lfpos,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where GMID = #{gmid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.byd.emg.pojo.ZCNIMATGM">
+    update ZCNIMATGM
+    set MBLNR = #{mblnr,jdbcType=VARCHAR},
+      MJAHR = #{mjahr,jdbcType=VARCHAR},
+      ZEILE = #{zeile,jdbcType=VARCHAR},
+      BUDAT = #{budat,jdbcType=VARCHAR},
+      CPUDT = #{cpudt,jdbcType=VARCHAR},
+      CPUTM = #{cputm,jdbcType=VARCHAR},
+      MATNR = #{matnr,jdbcType=VARCHAR},
+      WERKS = #{werks,jdbcType=VARCHAR},
+      LGORT = #{lgort,jdbcType=VARCHAR},
+      BWART = #{bwart,jdbcType=VARCHAR},
+      AUFNR = #{aufnr,jdbcType=VARCHAR},
+      MENGE = #{menge,jdbcType=VARCHAR},
+      MEINS = #{meins,jdbcType=VARCHAR},
+      ERFMG = #{erfmg,jdbcType=VARCHAR},
+      ERFME = #{erfme,jdbcType=VARCHAR},
+      DMBTR = #{dmbtr,jdbcType=VARCHAR},
+      WAERS = #{waers,jdbcType=VARCHAR},
+      BWTAR = #{bwtar,jdbcType=VARCHAR},
+      LFBJA = #{lfbja,jdbcType=VARCHAR},
+      LFBNR = #{lfbnr,jdbcType=VARCHAR},
+      LFPOS = #{lfpos,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where GMID = #{gmid,jdbcType=INTEGER}
+  </update>
+</mapper>

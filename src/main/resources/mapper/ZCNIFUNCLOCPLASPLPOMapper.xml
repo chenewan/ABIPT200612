@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.byd.emg.mapper.ZCNIFUNCLOCPLASPLPOMapper">
+  <resultMap id="BaseResultMap" type="com.byd.emg.pojo.ZCNIFUNCLOCPLASPLPO">
+    <id column="PLPOID" jdbcType="INTEGER" property="plpoid" />
+    <result column="PLNNR" jdbcType="VARCHAR" property="plnnr" />
+    <result column="PLNAL" jdbcType="VARCHAR" property="plnal" />
+    <result column="ZAEHL" jdbcType="VARCHAR" property="zaehl" />
+    <result column="LOEKZ" jdbcType="VARCHAR" property="loekz" />
+    <result column="WERKS" jdbcType="VARCHAR" property="werks" />
+    <result column="VORNR" jdbcType="VARCHAR" property="vornr" />
+    <result column="LTXA1" jdbcType="VARCHAR" property="ltxa1" />
+    <result column="ARBEI" jdbcType="VARCHAR" property="arbei" />
+    <result column="ARBEH" jdbcType="VARCHAR" property="arbeh" />
+    <result column="ANDAT_PLAS" jdbcType="VARCHAR" property="andatPlas" />
+    <result column="AEDAT_PLAS" jdbcType="VARCHAR" property="aedatPlas" />
+    <result column="ANDAT_PLPO" jdbcType="VARCHAR" property="andatPlpo" />
+    <result column="AEDAT_PLPO" jdbcType="VARCHAR" property="aedatPlpo" />
+    <result column="Remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PLPOID, PLNNR, PLNAL, ZAEHL, LOEKZ, WERKS, VORNR, LTXA1, ARBEI, ARBEH, ANDAT_PLAS, 
+    AEDAT_PLAS, ANDAT_PLPO, AEDAT_PLPO, Remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZCNIFUNCLOCPLASPLPO
+    where PLPOID = #{plpoid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ZCNIFUNCLOCPLASPLPO
+    where PLPOID = #{plpoid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.byd.emg.pojo.ZCNIFUNCLOCPLASPLPO">
+    insert into ZCNIFUNCLOCPLASPLPO (PLPOID, PLNNR, PLNAL, 
+      ZAEHL, LOEKZ, WERKS, 
+      VORNR, LTXA1, ARBEI, 
+      ARBEH, ANDAT_PLAS, AEDAT_PLAS, 
+      ANDAT_PLPO, AEDAT_PLPO, Remark
+      )
+    values (#{plpoid,jdbcType=INTEGER}, #{plnnr,jdbcType=VARCHAR}, #{plnal,jdbcType=VARCHAR}, 
+      #{zaehl,jdbcType=VARCHAR}, #{loekz,jdbcType=VARCHAR}, #{werks,jdbcType=VARCHAR}, 
+      #{vornr,jdbcType=VARCHAR}, #{ltxa1,jdbcType=VARCHAR}, #{arbei,jdbcType=VARCHAR}, 
+      #{arbeh,jdbcType=VARCHAR}, #{andatPlas,jdbcType=VARCHAR}, #{aedatPlas,jdbcType=VARCHAR}, 
+      #{andatPlpo,jdbcType=VARCHAR}, #{aedatPlpo,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.byd.emg.pojo.ZCNIFUNCLOCPLASPLPO">
+
+    IF NOT exists(SELECT TOP (1) * FROM ZCNIFUNCLOCPLASPLPO
+    where PLNNR = #{plnnr,jdbcType=VARCHAR}
+    AND PLNAL = #{plnal,jdbcType=VARCHAR}
+    AND ZAEHL = #{zaehl,jdbcType=VARCHAR})
+    insert into ZCNIFUNCLOCPLASPLPO (PLPOID, PLNNR, PLNAL,
+      ZAEHL, LOEKZ, WERKS,
+      VORNR, LTXA1, ARBEI,
+      ARBEH, ANDAT_PLAS, AEDAT_PLAS,
+      ANDAT_PLPO, AEDAT_PLPO, Remark
+      )
+    values (#{plpoid,jdbcType=INTEGER}, #{plnnr,jdbcType=VARCHAR}, #{plnal,jdbcType=VARCHAR},
+      #{zaehl,jdbcType=VARCHAR}, #{loekz,jdbcType=VARCHAR}, #{werks,jdbcType=VARCHAR},
+      #{vornr,jdbcType=VARCHAR}, #{ltxa1,jdbcType=VARCHAR}, #{arbei,jdbcType=VARCHAR},
+      #{arbeh,jdbcType=VARCHAR}, #{andatPlas,jdbcType=VARCHAR}, #{aedatPlas,jdbcType=VARCHAR},
+      #{andatPlpo,jdbcType=VARCHAR}, #{aedatPlpo,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+    ELSE
+    update ZCNIFUNCLOCPLASPLPO
+    set PLNNR = #{plnnr,jdbcType=VARCHAR},
+      PLNAL = #{plnal,jdbcType=VARCHAR},
+      ZAEHL = #{zaehl,jdbcType=VARCHAR},
+      LOEKZ = #{loekz,jdbcType=VARCHAR},
+      WERKS = #{werks,jdbcType=VARCHAR},
+      VORNR = #{vornr,jdbcType=VARCHAR},
+      LTXA1 = #{ltxa1,jdbcType=VARCHAR},
+      ARBEI = #{arbei,jdbcType=VARCHAR},
+      ARBEH = #{arbeh,jdbcType=VARCHAR},
+      ANDAT_PLAS = #{andatPlas,jdbcType=VARCHAR},
+      AEDAT_PLAS = #{aedatPlas,jdbcType=VARCHAR},
+      ANDAT_PLPO = #{andatPlpo,jdbcType=VARCHAR},
+      AEDAT_PLPO = #{aedatPlpo,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where PLNNR = #{plnnr,jdbcType=VARCHAR}
+    AND PLNAL = #{plnal,jdbcType=VARCHAR}
+    AND ZAEHL = #{zaehl,jdbcType=VARCHAR}
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.byd.emg.pojo.ZCNIFUNCLOCPLASPLPO">
+    update ZCNIFUNCLOCPLASPLPO
+    <set>
+      <if test="plnnr != null">
+        PLNNR = #{plnnr,jdbcType=VARCHAR},
+      </if>
+      <if test="plnal != null">
+        PLNAL = #{plnal,jdbcType=VARCHAR},
+      </if>
+      <if test="zaehl != null">
+        ZAEHL = #{zaehl,jdbcType=VARCHAR},
+      </if>
+      <if test="loekz != null">
+        LOEKZ = #{loekz,jdbcType=VARCHAR},
+      </if>
+      <if test="werks != null">
+        WERKS = #{werks,jdbcType=VARCHAR},
+      </if>
+      <if test="vornr != null">
+        VORNR = #{vornr,jdbcType=VARCHAR},
+      </if>
+      <if test="ltxa1 != null">
+        LTXA1 = #{ltxa1,jdbcType=VARCHAR},
+      </if>
+      <if test="arbei != null">
+        ARBEI = #{arbei,jdbcType=VARCHAR},
+      </if>
+      <if test="arbeh != null">
+        ARBEH = #{arbeh,jdbcType=VARCHAR},
+      </if>
+      <if test="andatPlas != null">
+        ANDAT_PLAS = #{andatPlas,jdbcType=VARCHAR},
+      </if>
+      <if test="aedatPlas != null">
+        AEDAT_PLAS = #{aedatPlas,jdbcType=VARCHAR},
+      </if>
+      <if test="andatPlpo != null">
+        ANDAT_PLPO = #{andatPlpo,jdbcType=VARCHAR},
+      </if>
+      <if test="aedatPlpo != null">
+        AEDAT_PLPO = #{aedatPlpo,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PLPOID = #{plpoid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.byd.emg.pojo.ZCNIFUNCLOCPLASPLPO">
+    update ZCNIFUNCLOCPLASPLPO
+    set PLNNR = #{plnnr,jdbcType=VARCHAR},
+      PLNAL = #{plnal,jdbcType=VARCHAR},
+      ZAEHL = #{zaehl,jdbcType=VARCHAR},
+      LOEKZ = #{loekz,jdbcType=VARCHAR},
+      WERKS = #{werks,jdbcType=VARCHAR},
+      VORNR = #{vornr,jdbcType=VARCHAR},
+      LTXA1 = #{ltxa1,jdbcType=VARCHAR},
+      ARBEI = #{arbei,jdbcType=VARCHAR},
+      ARBEH = #{arbeh,jdbcType=VARCHAR},
+      ANDAT_PLAS = #{andatPlas,jdbcType=VARCHAR},
+      AEDAT_PLAS = #{aedatPlas,jdbcType=VARCHAR},
+      ANDAT_PLPO = #{andatPlpo,jdbcType=VARCHAR},
+      AEDAT_PLPO = #{aedatPlpo,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where PLPOID = #{plpoid,jdbcType=INTEGER}
+  </update>
+</mapper>

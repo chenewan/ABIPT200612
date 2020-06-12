@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.byd.emg.mapper.ZCNIFUNCLOCTAPLMapper">
+  <resultMap id="BaseResultMap" type="com.byd.emg.pojo.ZCNIFUNCLOCTAPL">
+    <id column="TAPLID" jdbcType="INTEGER" property="taplid" />
+    <result column="TPLNR" jdbcType="VARCHAR" property="tplnr" />
+    <result column="PLNNR" jdbcType="VARCHAR" property="plnnr" />
+    <result column="PLNAL" jdbcType="VARCHAR" property="plnal" />
+    <result column="LOEKZ" jdbcType="VARCHAR" property="loekz" />
+    <result column="IWERK" jdbcType="VARCHAR" property="iwerk" />
+    <result column="ANDAT" jdbcType="VARCHAR" property="andat" />
+    <result column="AEDAT" jdbcType="VARCHAR" property="aedat" />
+    <result column="Remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    TAPLID, TPLNR, PLNNR, PLNAL, LOEKZ, IWERK, ANDAT, AEDAT, Remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZCNIFUNCLOCTAPL
+    where TAPLID = #{taplid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ZCNIFUNCLOCTAPL
+    where TAPLID = #{taplid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.byd.emg.pojo.ZCNIFUNCLOCTAPL">
+    insert into ZCNIFUNCLOCTAPL (TAPLID, TPLNR, PLNNR, 
+      PLNAL, LOEKZ, IWERK, 
+      ANDAT, AEDAT, Remark
+      )
+    values (#{taplid,jdbcType=INTEGER}, #{tplnr,jdbcType=VARCHAR}, #{plnnr,jdbcType=VARCHAR}, 
+      #{plnal,jdbcType=VARCHAR}, #{loekz,jdbcType=VARCHAR}, #{iwerk,jdbcType=VARCHAR}, 
+      #{andat,jdbcType=VARCHAR}, #{aedat,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.byd.emg.pojo.ZCNIFUNCLOCTAPL">
+
+    IF NOT exists(SELECT TOP(1) * FROM ZCNIFUNCLOCTAPL
+    where TPLNR = #{taplid,jdbcType=VARCHAR}
+    AND PLNNR = #{plnnr,jdbcType=VARCHAR})
+    AND PLNAL = #{plnal,jdbcType=VARCHAR})
+    insert into ZCNIFUNCLOCTAPL (TAPLID, TPLNR, PLNNR,
+      PLNAL, LOEKZ, IWERK,
+      ANDAT, AEDAT, Remark
+      )
+    values (#{taplid,jdbcType=INTEGER}, #{tplnr,jdbcType=VARCHAR}, #{plnnr,jdbcType=VARCHAR},
+      #{plnal,jdbcType=VARCHAR}, #{loekz,jdbcType=VARCHAR}, #{iwerk,jdbcType=VARCHAR},
+      #{andat,jdbcType=VARCHAR}, #{aedat,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+    ELSE
+    update ZCNIFUNCLOCTAPL
+    set TPLNR = #{tplnr,jdbcType=VARCHAR},
+      PLNNR = #{plnnr,jdbcType=VARCHAR},
+      PLNAL = #{plnal,jdbcType=VARCHAR},
+      LOEKZ = #{loekz,jdbcType=VARCHAR},
+      IWERK = #{iwerk,jdbcType=VARCHAR},
+      ANDAT = #{andat,jdbcType=VARCHAR},
+      AEDAT = #{aedat,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where TPLNR = #{taplid,jdbcType=VARCHAR}
+    AND PLNNR = #{plnnr,jdbcType=VARCHAR}
+    AND PLNAL = #{plnal,jdbcType=VARCHAR}
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.byd.emg.pojo.ZCNIFUNCLOCTAPL">
+    update ZCNIFUNCLOCTAPL
+    <set>
+      <if test="tplnr != null">
+        TPLNR = #{tplnr,jdbcType=VARCHAR},
+      </if>
+      <if test="plnnr != null">
+        PLNNR = #{plnnr,jdbcType=VARCHAR},
+      </if>
+      <if test="plnal != null">
+        PLNAL = #{plnal,jdbcType=VARCHAR},
+      </if>
+      <if test="loekz != null">
+        LOEKZ = #{loekz,jdbcType=VARCHAR},
+      </if>
+      <if test="iwerk != null">
+        IWERK = #{iwerk,jdbcType=VARCHAR},
+      </if>
+      <if test="andat != null">
+        ANDAT = #{andat,jdbcType=VARCHAR},
+      </if>
+      <if test="aedat != null">
+        AEDAT = #{aedat,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TAPLID = #{taplid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.byd.emg.pojo.ZCNIFUNCLOCTAPL">
+    update ZCNIFUNCLOCTAPL
+    set TPLNR = #{tplnr,jdbcType=VARCHAR},
+      PLNNR = #{plnnr,jdbcType=VARCHAR},
+      PLNAL = #{plnal,jdbcType=VARCHAR},
+      LOEKZ = #{loekz,jdbcType=VARCHAR},
+      IWERK = #{iwerk,jdbcType=VARCHAR},
+      ANDAT = #{andat,jdbcType=VARCHAR},
+      AEDAT = #{aedat,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where TAPLID = #{taplid,jdbcType=INTEGER}
+  </update>
+</mapper>

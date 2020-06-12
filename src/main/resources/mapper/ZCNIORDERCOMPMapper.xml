@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.byd.emg.mapper.ZCNIORDERCOMPMapper">
+  <resultMap id="BaseResultMap" type="com.byd.emg.pojo.ZCNIORDERCOMP">
+    <id column="COMPID" jdbcType="INTEGER" property="compid" />
+    <result column="AUFNR" jdbcType="VARCHAR" property="aufnr" />
+    <result column="VORNR" jdbcType="VARCHAR" property="vornr" />
+    <result column="POSNR" jdbcType="VARCHAR" property="posnr" />
+    <result column="MATNR" jdbcType="VARCHAR" property="matnr" />
+    <result column="BDMNG" jdbcType="VARCHAR" property="bdmng" />
+    <result column="MEINS" jdbcType="VARCHAR" property="meins" />
+    <result column="WERKS" jdbcType="VARCHAR" property="werks" />
+    <result column="LGORT" jdbcType="VARCHAR" property="lgort" />
+    <result column="CHARG" jdbcType="VARCHAR" property="charg" />
+    <result column="GPREIS" jdbcType="VARCHAR" property="gpreis" />
+    <result column="PEINH" jdbcType="VARCHAR" property="peinh" />
+    <result column="WAERS" jdbcType="VARCHAR" property="waers" />
+    <result column="ERDAT" jdbcType="VARCHAR" property="erdat" />
+    <result column="AEDAT" jdbcType="VARCHAR" property="aedat" />
+    <result column="Remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    COMPID, AUFNR, VORNR, POSNR, MATNR, BDMNG, MEINS, WERKS, LGORT, CHARG, GPREIS, PEINH, 
+    WAERS, ERDAT, AEDAT, Remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZCNIORDERCOMP
+    where COMPID = #{compid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ZCNIORDERCOMP
+    where COMPID = #{compid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.byd.emg.pojo.ZCNIORDERCOMP">
+    insert into ZCNIORDERCOMP (COMPID, AUFNR, VORNR, 
+      POSNR, MATNR, BDMNG, 
+      MEINS, WERKS, LGORT, 
+      CHARG, GPREIS, PEINH, 
+      WAERS, ERDAT, AEDAT, 
+      Remark)
+    values (#{compid,jdbcType=INTEGER}, #{aufnr,jdbcType=VARCHAR}, #{vornr,jdbcType=VARCHAR}, 
+      #{posnr,jdbcType=VARCHAR}, #{matnr,jdbcType=VARCHAR}, #{bdmng,jdbcType=VARCHAR}, 
+      #{meins,jdbcType=VARCHAR}, #{werks,jdbcType=VARCHAR}, #{lgort,jdbcType=VARCHAR}, 
+      #{charg,jdbcType=VARCHAR}, #{gpreis,jdbcType=VARCHAR}, #{peinh,jdbcType=VARCHAR}, 
+      #{waers,jdbcType=VARCHAR}, #{erdat,jdbcType=VARCHAR}, #{aedat,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.byd.emg.pojo.ZCNIORDERCOMP">
+    insert into ZCNIORDERCOMP
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="compid != null">
+        COMPID,
+      </if>
+      <if test="aufnr != null">
+        AUFNR,
+      </if>
+      <if test="vornr != null">
+        VORNR,
+      </if>
+      <if test="posnr != null">
+        POSNR,
+      </if>
+      <if test="matnr != null">
+        MATNR,
+      </if>
+      <if test="bdmng != null">
+        BDMNG,
+      </if>
+      <if test="meins != null">
+        MEINS,
+      </if>
+      <if test="werks != null">
+        WERKS,
+      </if>
+      <if test="lgort != null">
+        LGORT,
+      </if>
+      <if test="charg != null">
+        CHARG,
+      </if>
+      <if test="gpreis != null">
+        GPREIS,
+      </if>
+      <if test="peinh != null">
+        PEINH,
+      </if>
+      <if test="waers != null">
+        WAERS,
+      </if>
+      <if test="erdat != null">
+        ERDAT,
+      </if>
+      <if test="aedat != null">
+        AEDAT,
+      </if>
+      <if test="remark != null">
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="compid != null">
+        #{compid,jdbcType=INTEGER},
+      </if>
+      <if test="aufnr != null">
+        #{aufnr,jdbcType=VARCHAR},
+      </if>
+      <if test="vornr != null">
+        #{vornr,jdbcType=VARCHAR},
+      </if>
+      <if test="posnr != null">
+        #{posnr,jdbcType=VARCHAR},
+      </if>
+      <if test="matnr != null">
+        #{matnr,jdbcType=VARCHAR},
+      </if>
+      <if test="bdmng != null">
+        #{bdmng,jdbcType=VARCHAR},
+      </if>
+      <if test="meins != null">
+        #{meins,jdbcType=VARCHAR},
+      </if>
+      <if test="werks != null">
+        #{werks,jdbcType=VARCHAR},
+      </if>
+      <if test="lgort != null">
+        #{lgort,jdbcType=VARCHAR},
+      </if>
+      <if test="charg != null">
+        #{charg,jdbcType=VARCHAR},
+      </if>
+      <if test="gpreis != null">
+        #{gpreis,jdbcType=VARCHAR},
+      </if>
+      <if test="peinh != null">
+        #{peinh,jdbcType=VARCHAR},
+      </if>
+      <if test="waers != null">
+        #{waers,jdbcType=VARCHAR},
+      </if>
+      <if test="erdat != null">
+        #{erdat,jdbcType=VARCHAR},
+      </if>
+      <if test="aedat != null">
+        #{aedat,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.byd.emg.pojo.ZCNIORDERCOMP">
+    update ZCNIORDERCOMP
+    <set>
+      <if test="aufnr != null">
+        AUFNR = #{aufnr,jdbcType=VARCHAR},
+      </if>
+      <if test="vornr != null">
+        VORNR = #{vornr,jdbcType=VARCHAR},
+      </if>
+      <if test="posnr != null">
+        POSNR = #{posnr,jdbcType=VARCHAR},
+      </if>
+      <if test="matnr != null">
+        MATNR = #{matnr,jdbcType=VARCHAR},
+      </if>
+      <if test="bdmng != null">
+        BDMNG = #{bdmng,jdbcType=VARCHAR},
+      </if>
+      <if test="meins != null">
+        MEINS = #{meins,jdbcType=VARCHAR},
+      </if>
+      <if test="werks != null">
+        WERKS = #{werks,jdbcType=VARCHAR},
+      </if>
+      <if test="lgort != null">
+        LGORT = #{lgort,jdbcType=VARCHAR},
+      </if>
+      <if test="charg != null">
+        CHARG = #{charg,jdbcType=VARCHAR},
+      </if>
+      <if test="gpreis != null">
+        GPREIS = #{gpreis,jdbcType=VARCHAR},
+      </if>
+      <if test="peinh != null">
+        PEINH = #{peinh,jdbcType=VARCHAR},
+      </if>
+      <if test="waers != null">
+        WAERS = #{waers,jdbcType=VARCHAR},
+      </if>
+      <if test="erdat != null">
+        ERDAT = #{erdat,jdbcType=VARCHAR},
+      </if>
+      <if test="aedat != null">
+        AEDAT = #{aedat,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where COMPID = #{compid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.byd.emg.pojo.ZCNIORDERCOMP">
+    update ZCNIORDERCOMP
+    set AUFNR = #{aufnr,jdbcType=VARCHAR},
+      VORNR = #{vornr,jdbcType=VARCHAR},
+      POSNR = #{posnr,jdbcType=VARCHAR},
+      MATNR = #{matnr,jdbcType=VARCHAR},
+      BDMNG = #{bdmng,jdbcType=VARCHAR},
+      MEINS = #{meins,jdbcType=VARCHAR},
+      WERKS = #{werks,jdbcType=VARCHAR},
+      LGORT = #{lgort,jdbcType=VARCHAR},
+      CHARG = #{charg,jdbcType=VARCHAR},
+      GPREIS = #{gpreis,jdbcType=VARCHAR},
+      PEINH = #{peinh,jdbcType=VARCHAR},
+      WAERS = #{waers,jdbcType=VARCHAR},
+      ERDAT = #{erdat,jdbcType=VARCHAR},
+      AEDAT = #{aedat,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where COMPID = #{compid,jdbcType=INTEGER}
+  </update>
+</mapper>

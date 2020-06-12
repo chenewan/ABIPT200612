@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.byd.emg.mapper.LastvpoMapper">
+  <resultMap id="BaseResultMap" type="com.byd.emg.pojo.Lastvpo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="vpono" jdbcType="VARCHAR" property="vpono" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, vpono
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lastvpo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lastvpo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <update id="insertToSQL" parameterType="java.lang.String">
+    update lastvpono
+    set vpono = #{vpono,jdbcType=VARCHAR}
+    where id >0
+  </update>
+  <insert id="insertToSQL1" parameterType="java.lang.String">
+    insert into lastvpo (vpono)
+    values (#{vpono,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insert" parameterType="com.byd.emg.pojo.Lastvpo">
+    insert into lastvpo (id, vpono)
+    values (#{id,jdbcType=INTEGER}, #{vpono,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.byd.emg.pojo.Lastvpo">
+    insert into lastvpo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="vpono != null">
+        vpono,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="vpono != null">
+        #{vpono,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.byd.emg.pojo.Lastvpo">
+    update lastvpo
+    <set>
+      <if test="vpono != null">
+        vpono = #{vpono,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.byd.emg.pojo.Lastvpo">
+    update lastvpo
+    set vpono = #{vpono,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

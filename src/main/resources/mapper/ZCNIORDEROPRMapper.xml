@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.byd.emg.mapper.ZCNIORDEROPRMapper">
+  <resultMap id="BaseResultMap" type="com.byd.emg.pojo.ZCNIORDEROPR">
+    <id column="OPRID" jdbcType="INTEGER" property="oprid" />
+    <result column="AUFNR" jdbcType="VARCHAR" property="aufnr" />
+    <result column="VORNR" jdbcType="VARCHAR" property="vornr" />
+    <result column="STEUS" jdbcType="VARCHAR" property="steus" />
+    <result column="LTXA1" jdbcType="VARCHAR" property="ltxa1" />
+    <result column="PREIS" jdbcType="VARCHAR" property="preis" />
+    <result column="PEINH" jdbcType="VARCHAR" property="peinh" />
+    <result column="WAERS" jdbcType="VARCHAR" property="waers" />
+    <result column="ARBPL" jdbcType="VARCHAR" property="arbpl" />
+    <result column="ARBEI" jdbcType="VARCHAR" property="arbei" />
+    <result column="ISMNW" jdbcType="VARCHAR" property="ismnw" />
+    <result column="ARBEH" jdbcType="VARCHAR" property="arbeh" />
+    <result column="ERDAT" jdbcType="VARCHAR" property="erdat" />
+    <result column="AEDAT" jdbcType="VARCHAR" property="aedat" />
+    <result column="Remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    OPRID, AUFNR, VORNR, STEUS, LTXA1, PREIS, PEINH, WAERS, ARBPL, ARBEI, ISMNW, ARBEH, 
+    ERDAT, AEDAT, Remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZCNIORDEROPR
+    where OPRID = #{oprid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ZCNIORDEROPR
+    where OPRID = #{oprid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.byd.emg.pojo.ZCNIORDEROPR">
+    insert into ZCNIORDEROPR (OPRID, AUFNR, VORNR, 
+      STEUS, LTXA1, PREIS, 
+      PEINH, WAERS, ARBPL, 
+      ARBEI, ISMNW, ARBEH, 
+      ERDAT, AEDAT, Remark
+      )
+    values (#{oprid,jdbcType=INTEGER}, #{aufnr,jdbcType=VARCHAR}, #{vornr,jdbcType=VARCHAR}, 
+      #{steus,jdbcType=VARCHAR}, #{ltxa1,jdbcType=VARCHAR}, #{preis,jdbcType=VARCHAR}, 
+      #{peinh,jdbcType=VARCHAR}, #{waers,jdbcType=VARCHAR}, #{arbpl,jdbcType=VARCHAR}, 
+      #{arbei,jdbcType=VARCHAR}, #{ismnw,jdbcType=VARCHAR}, #{arbeh,jdbcType=VARCHAR}, 
+      #{erdat,jdbcType=VARCHAR}, #{aedat,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.byd.emg.pojo.ZCNIORDEROPR">
+    insert into ZCNIORDEROPR
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oprid != null">
+        OPRID,
+      </if>
+      <if test="aufnr != null">
+        AUFNR,
+      </if>
+      <if test="vornr != null">
+        VORNR,
+      </if>
+      <if test="steus != null">
+        STEUS,
+      </if>
+      <if test="ltxa1 != null">
+        LTXA1,
+      </if>
+      <if test="preis != null">
+        PREIS,
+      </if>
+      <if test="peinh != null">
+        PEINH,
+      </if>
+      <if test="waers != null">
+        WAERS,
+      </if>
+      <if test="arbpl != null">
+        ARBPL,
+      </if>
+      <if test="arbei != null">
+        ARBEI,
+      </if>
+      <if test="ismnw != null">
+        ISMNW,
+      </if>
+      <if test="arbeh != null">
+        ARBEH,
+      </if>
+      <if test="erdat != null">
+        ERDAT,
+      </if>
+      <if test="aedat != null">
+        AEDAT,
+      </if>
+      <if test="remark != null">
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oprid != null">
+        #{oprid,jdbcType=INTEGER},
+      </if>
+      <if test="aufnr != null">
+        #{aufnr,jdbcType=VARCHAR},
+      </if>
+      <if test="vornr != null">
+        #{vornr,jdbcType=VARCHAR},
+      </if>
+      <if test="steus != null">
+        #{steus,jdbcType=VARCHAR},
+      </if>
+      <if test="ltxa1 != null">
+        #{ltxa1,jdbcType=VARCHAR},
+      </if>
+      <if test="preis != null">
+        #{preis,jdbcType=VARCHAR},
+      </if>
+      <if test="peinh != null">
+        #{peinh,jdbcType=VARCHAR},
+      </if>
+      <if test="waers != null">
+        #{waers,jdbcType=VARCHAR},
+      </if>
+      <if test="arbpl != null">
+        #{arbpl,jdbcType=VARCHAR},
+      </if>
+      <if test="arbei != null">
+        #{arbei,jdbcType=VARCHAR},
+      </if>
+      <if test="ismnw != null">
+        #{ismnw,jdbcType=VARCHAR},
+      </if>
+      <if test="arbeh != null">
+        #{arbeh,jdbcType=VARCHAR},
+      </if>
+      <if test="erdat != null">
+        #{erdat,jdbcType=VARCHAR},
+      </if>
+      <if test="aedat != null">
+        #{aedat,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.byd.emg.pojo.ZCNIORDEROPR">
+    update ZCNIORDEROPR
+    <set>
+      <if test="aufnr != null">
+        AUFNR = #{aufnr,jdbcType=VARCHAR},
+      </if>
+      <if test="vornr != null">
+        VORNR = #{vornr,jdbcType=VARCHAR},
+      </if>
+      <if test="steus != null">
+        STEUS = #{steus,jdbcType=VARCHAR},
+      </if>
+      <if test="ltxa1 != null">
+        LTXA1 = #{ltxa1,jdbcType=VARCHAR},
+      </if>
+      <if test="preis != null">
+        PREIS = #{preis,jdbcType=VARCHAR},
+      </if>
+      <if test="peinh != null">
+        PEINH = #{peinh,jdbcType=VARCHAR},
+      </if>
+      <if test="waers != null">
+        WAERS = #{waers,jdbcType=VARCHAR},
+      </if>
+      <if test="arbpl != null">
+        ARBPL = #{arbpl,jdbcType=VARCHAR},
+      </if>
+      <if test="arbei != null">
+        ARBEI = #{arbei,jdbcType=VARCHAR},
+      </if>
+      <if test="ismnw != null">
+        ISMNW = #{ismnw,jdbcType=VARCHAR},
+      </if>
+      <if test="arbeh != null">
+        ARBEH = #{arbeh,jdbcType=VARCHAR},
+      </if>
+      <if test="erdat != null">
+        ERDAT = #{erdat,jdbcType=VARCHAR},
+      </if>
+      <if test="aedat != null">
+        AEDAT = #{aedat,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where OPRID = #{oprid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.byd.emg.pojo.ZCNIORDEROPR">
+    update ZCNIORDEROPR
+    set AUFNR = #{aufnr,jdbcType=VARCHAR},
+      VORNR = #{vornr,jdbcType=VARCHAR},
+      STEUS = #{steus,jdbcType=VARCHAR},
+      LTXA1 = #{ltxa1,jdbcType=VARCHAR},
+      PREIS = #{preis,jdbcType=VARCHAR},
+      PEINH = #{peinh,jdbcType=VARCHAR},
+      WAERS = #{waers,jdbcType=VARCHAR},
+      ARBPL = #{arbpl,jdbcType=VARCHAR},
+      ARBEI = #{arbei,jdbcType=VARCHAR},
+      ISMNW = #{ismnw,jdbcType=VARCHAR},
+      ARBEH = #{arbeh,jdbcType=VARCHAR},
+      ERDAT = #{erdat,jdbcType=VARCHAR},
+      AEDAT = #{aedat,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where OPRID = #{oprid,jdbcType=INTEGER}
+  </update>
+</mapper>

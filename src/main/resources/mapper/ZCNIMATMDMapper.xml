@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.byd.emg.mapper.ZCNIMATMDMapper">
+  <resultMap id="BaseResultMap" type="com.byd.emg.pojo.ZCNIMATMD">
+    <id column="MDID" jdbcType="INTEGER" property="mdid" />
+    <result column="MATNR" jdbcType="VARCHAR" property="matnr" />
+    <result column="WERKS" jdbcType="VARCHAR" property="werks" />
+    <result column="LGORT" jdbcType="VARCHAR" property="lgort" />
+    <result column="LVORM_MARA" jdbcType="VARCHAR" property="lvormMara" />
+    <result column="LVORM_MARC" jdbcType="VARCHAR" property="lvormMarc" />
+    <result column="LVORM_MARD" jdbcType="VARCHAR" property="lvormMard" />
+    <result column="MAKTX" jdbcType="VARCHAR" property="maktx" />
+    <result column="MTART" jdbcType="VARCHAR" property="mtart" />
+    <result column="MEINS" jdbcType="VARCHAR" property="meins" />
+    <result column="MMSTA" jdbcType="VARCHAR" property="mmsta" />
+    <result column="MFRPN" jdbcType="VARCHAR" property="mfrpn" />
+    <result column="DISPO" jdbcType="VARCHAR" property="dispo" />
+    <result column="LGPBE" jdbcType="VARCHAR" property="lgpbe" />
+    <result column="ERSDA" jdbcType="VARCHAR" property="ersda" />
+    <result column="LAEDA" jdbcType="VARCHAR" property="laeda" />
+    <result column="Remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    MDID, MATNR, WERKS, LGORT, LVORM_MARA, LVORM_MARC, LVORM_MARD, MAKTX, MTART, MEINS, 
+    MMSTA, MFRPN, DISPO, LGPBE, ERSDA, LAEDA, Remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZCNIMATMD
+    where MDID = #{mdid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ZCNIMATMD
+    where MDID = #{mdid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.byd.emg.pojo.ZCNIMATMD">
+    insert into ZCNIMATMD (MDID, MATNR, WERKS, 
+      LGORT, LVORM_MARA, LVORM_MARC, 
+      LVORM_MARD, MAKTX, MTART, 
+      MEINS, MMSTA, MFRPN, 
+      DISPO, LGPBE, ERSDA, 
+      LAEDA, Remark)
+    values (#{mdid,jdbcType=INTEGER}, #{matnr,jdbcType=VARCHAR}, #{werks,jdbcType=VARCHAR}, 
+      #{lgort,jdbcType=VARCHAR}, #{lvormMara,jdbcType=VARCHAR}, #{lvormMarc,jdbcType=VARCHAR}, 
+      #{lvormMard,jdbcType=VARCHAR}, #{maktx,jdbcType=VARCHAR}, #{mtart,jdbcType=VARCHAR}, 
+      #{meins,jdbcType=VARCHAR}, #{mmsta,jdbcType=VARCHAR}, #{mfrpn,jdbcType=VARCHAR}, 
+      #{dispo,jdbcType=VARCHAR}, #{lgpbe,jdbcType=VARCHAR}, #{ersda,jdbcType=VARCHAR}, 
+      #{laeda,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.byd.emg.pojo.ZCNIMATMD">
+
+    IF NOT exists(SELECT TOP 1 * FROM ZCNIMATMD
+    where MATNR = #{matnr,jdbcType=VARCHAR}
+    AND WERKS = #{werks,jdbcType=VARCHAR}
+    AND LGORT = #{lgort,jdbcType=VARCHAR})
+    insert into ZCNIMATMD ( MATNR, WERKS,
+      LGORT, LVORM_MARA, LVORM_MARC,
+      LVORM_MARD, MAKTX, MTART,
+      MEINS, MMSTA, MFRPN,
+      DISPO, LGPBE, ERSDA,
+      LAEDA)
+    values ( #{matnr,jdbcType=VARCHAR}, #{werks,jdbcType=VARCHAR},
+      #{lgort,jdbcType=VARCHAR}, #{lvormMara,jdbcType=VARCHAR}, #{lvormMarc,jdbcType=VARCHAR},
+      #{lvormMard,jdbcType=VARCHAR}, #{maktx,jdbcType=VARCHAR}, #{mtart,jdbcType=VARCHAR},
+      #{meins,jdbcType=VARCHAR}, #{mmsta,jdbcType=VARCHAR}, #{mfrpn,jdbcType=VARCHAR},
+      #{dispo,jdbcType=VARCHAR}, #{lgpbe,jdbcType=VARCHAR}, #{ersda,jdbcType=VARCHAR},
+      #{laeda,jdbcType=VARCHAR})
+    ELSE
+    update ZCNIMATMD
+    set MATNR = #{matnr,jdbcType=VARCHAR},
+      WERKS = #{werks,jdbcType=VARCHAR},
+      LGORT = #{lgort,jdbcType=VARCHAR},
+      LVORM_MARA = #{lvormMara,jdbcType=VARCHAR},
+      LVORM_MARC = #{lvormMarc,jdbcType=VARCHAR},
+      LVORM_MARD = #{lvormMard,jdbcType=VARCHAR},
+      MAKTX = #{maktx,jdbcType=VARCHAR},
+      MTART = #{mtart,jdbcType=VARCHAR},
+      MEINS = #{meins,jdbcType=VARCHAR},
+      MMSTA = #{mmsta,jdbcType=VARCHAR},
+      MFRPN = #{mfrpn,jdbcType=VARCHAR},
+      DISPO = #{dispo,jdbcType=VARCHAR},
+      LGPBE = #{lgpbe,jdbcType=VARCHAR},
+      ERSDA = #{ersda,jdbcType=VARCHAR},
+      LAEDA = #{laeda,jdbcType=VARCHAR}
+    where MATNR = #{matnr,jdbcType=VARCHAR}
+    AND WERKS = #{werks,jdbcType=VARCHAR}
+    AND LGORT = #{lgort,jdbcType=VARCHAR}
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.byd.emg.pojo.ZCNIMATMD">
+    update ZCNIMATMD
+    <set>
+      <if test="matnr != null">
+        MATNR = #{matnr,jdbcType=VARCHAR},
+      </if>
+      <if test="werks != null">
+        WERKS = #{werks,jdbcType=VARCHAR},
+      </if>
+      <if test="lgort != null">
+        LGORT = #{lgort,jdbcType=VARCHAR},
+      </if>
+      <if test="lvormMara != null">
+        LVORM_MARA = #{lvormMara,jdbcType=VARCHAR},
+      </if>
+      <if test="lvormMarc != null">
+        LVORM_MARC = #{lvormMarc,jdbcType=VARCHAR},
+      </if>
+      <if test="lvormMard != null">
+        LVORM_MARD = #{lvormMard,jdbcType=VARCHAR},
+      </if>
+      <if test="maktx != null">
+        MAKTX = #{maktx,jdbcType=VARCHAR},
+      </if>
+      <if test="mtart != null">
+        MTART = #{mtart,jdbcType=VARCHAR},
+      </if>
+      <if test="meins != null">
+        MEINS = #{meins,jdbcType=VARCHAR},
+      </if>
+      <if test="mmsta != null">
+        MMSTA = #{mmsta,jdbcType=VARCHAR},
+      </if>
+      <if test="mfrpn != null">
+        MFRPN = #{mfrpn,jdbcType=VARCHAR},
+      </if>
+      <if test="dispo != null">
+        DISPO = #{dispo,jdbcType=VARCHAR},
+      </if>
+      <if test="lgpbe != null">
+        LGPBE = #{lgpbe,jdbcType=VARCHAR},
+      </if>
+      <if test="ersda != null">
+        ERSDA = #{ersda,jdbcType=VARCHAR},
+      </if>
+      <if test="laeda != null">
+        LAEDA = #{laeda,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where MDID = #{mdid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.byd.emg.pojo.ZCNIMATMD">
+    update ZCNIMATMD
+    set MATNR = #{matnr,jdbcType=VARCHAR},
+      WERKS = #{werks,jdbcType=VARCHAR},
+      LGORT = #{lgort,jdbcType=VARCHAR},
+      LVORM_MARA = #{lvormMara,jdbcType=VARCHAR},
+      LVORM_MARC = #{lvormMarc,jdbcType=VARCHAR},
+      LVORM_MARD = #{lvormMard,jdbcType=VARCHAR},
+      MAKTX = #{maktx,jdbcType=VARCHAR},
+      MTART = #{mtart,jdbcType=VARCHAR},
+      MEINS = #{meins,jdbcType=VARCHAR},
+      MMSTA = #{mmsta,jdbcType=VARCHAR},
+      MFRPN = #{mfrpn,jdbcType=VARCHAR},
+      DISPO = #{dispo,jdbcType=VARCHAR},
+      LGPBE = #{lgpbe,jdbcType=VARCHAR},
+      ERSDA = #{ersda,jdbcType=VARCHAR},
+      LAEDA = #{laeda,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where MDID = #{mdid,jdbcType=INTEGER}
+  </update>
+</mapper>

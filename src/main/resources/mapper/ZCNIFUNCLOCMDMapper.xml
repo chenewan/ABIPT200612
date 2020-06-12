@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.byd.emg.mapper.ZCNIFUNCLOCMDMapper">
+  <resultMap id="BaseResultMap" type="com.byd.emg.pojo.ZCNIFUNCLOCMD">
+    <id column="MDID" jdbcType="INTEGER" property="mdid" />
+    <result column="TPLNR" jdbcType="VARCHAR" property="tplnr" />
+    <result column="PLTXT" jdbcType="VARCHAR" property="pltxt" />
+    <result column="STTXT" jdbcType="VARCHAR" property="sttxt" />
+    <result column="IWERK" jdbcType="VARCHAR" property="iwerk" />
+    <result column="EQART" jdbcType="VARCHAR" property="eqart" />
+    <result column="EARTX" jdbcType="VARCHAR" property="eartx" />
+    <result column="HERST" jdbcType="VARCHAR" property="herst" />
+    <result column="HERLD" jdbcType="VARCHAR" property="herld" />
+    <result column="BAUJJ" jdbcType="VARCHAR" property="baujj" />
+    <result column="TYPBZ" jdbcType="VARCHAR" property="typbz" />
+    <result column="SERGE" jdbcType="VARCHAR" property="serge" />
+    <result column="GROES" jdbcType="VARCHAR" property="groes" />
+    <result column="BRGEW" jdbcType="VARCHAR" property="brgew" />
+    <result column="GEWEI" jdbcType="VARCHAR" property="gewei" />
+    <result column="ANSWT" jdbcType="VARCHAR" property="answt" />
+    <result column="WAERS" jdbcType="VARCHAR" property="waers" />
+    <result column="ANSDT" jdbcType="VARCHAR" property="ansdt" />
+    <result column="BAUMM" jdbcType="VARCHAR" property="baumm" />
+    <result column="INGRP" jdbcType="VARCHAR" property="ingrp" />
+    <result column="TPLMA" jdbcType="VARCHAR" property="tplma" />
+    <result column="BEBER" jdbcType="VARCHAR" property="beber" />
+    <result column="ABCKZ" jdbcType="VARCHAR" property="abckz" />
+    <result column="EQFNR" jdbcType="VARCHAR" property="eqfnr" />
+    <result column="MSGRP" jdbcType="VARCHAR" property="msgrp" />
+    <result column="KOSTL" jdbcType="VARCHAR" property="kostl" />
+    <result column="STORT" jdbcType="VARCHAR" property="stort" />
+    <result column="ARBPL" jdbcType="VARCHAR" property="arbpl" />
+    <result column="ERDAT" jdbcType="VARCHAR" property="erdat" />
+    <result column="AEDAT" jdbcType="VARCHAR" property="aedat" />
+    <result column="Remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    MDID, TPLNR, PLTXT, STTXT, IWERK, EQART, EARTX, HERST, HERLD, BAUJJ, TYPBZ, SERGE, 
+    GROES, BRGEW, GEWEI, ANSWT, WAERS, ANSDT, BAUMM, INGRP, TPLMA, BEBER, ABCKZ, EQFNR, 
+    MSGRP, KOSTL, STORT, ARBPL, ERDAT, AEDAT, Remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZCNIFUNCLOCMD
+    where MDID = #{mdid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ZCNIFUNCLOCMD
+    where MDID = #{mdid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.byd.emg.pojo.ZCNIFUNCLOCMD">
+    insert into ZCNIFUNCLOCMD (MDID, TPLNR, PLTXT, 
+      STTXT, IWERK, EQART, 
+      EARTX, HERST, HERLD, 
+      BAUJJ, TYPBZ, SERGE, 
+      GROES, BRGEW, GEWEI, 
+      ANSWT, WAERS, ANSDT, 
+      BAUMM, INGRP, TPLMA, 
+      BEBER, ABCKZ, EQFNR, 
+      MSGRP, KOSTL, STORT, 
+      ARBPL, ERDAT, AEDAT, 
+      Remark)
+    values (#{mdid,jdbcType=INTEGER}, #{tplnr,jdbcType=VARCHAR}, #{pltxt,jdbcType=VARCHAR}, 
+      #{sttxt,jdbcType=VARCHAR}, #{iwerk,jdbcType=VARCHAR}, #{eqart,jdbcType=VARCHAR}, 
+      #{eartx,jdbcType=VARCHAR}, #{herst,jdbcType=VARCHAR}, #{herld,jdbcType=VARCHAR}, 
+      #{baujj,jdbcType=VARCHAR}, #{typbz,jdbcType=VARCHAR}, #{serge,jdbcType=VARCHAR}, 
+      #{groes,jdbcType=VARCHAR}, #{brgew,jdbcType=VARCHAR}, #{gewei,jdbcType=VARCHAR}, 
+      #{answt,jdbcType=VARCHAR}, #{waers,jdbcType=VARCHAR}, #{ansdt,jdbcType=VARCHAR}, 
+      #{baumm,jdbcType=VARCHAR}, #{ingrp,jdbcType=VARCHAR}, #{tplma,jdbcType=VARCHAR}, 
+      #{beber,jdbcType=VARCHAR}, #{abckz,jdbcType=VARCHAR}, #{eqfnr,jdbcType=VARCHAR}, 
+      #{msgrp,jdbcType=VARCHAR}, #{kostl,jdbcType=VARCHAR}, #{stort,jdbcType=VARCHAR}, 
+      #{arbpl,jdbcType=VARCHAR}, #{erdat,jdbcType=VARCHAR}, #{aedat,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.byd.emg.pojo.ZCNIFUNCLOCMD">
+
+IF NOT exists(SELECT TOP 1 * FROM ZCNIFUNCLOCMD WHERE [TPLNR]=#{tplnr,jdbcType=VARCHAR})
+    insert into ZCNIFUNCLOCMD (TPLNR, PLTXT,
+      STTXT, IWERK, EQART,
+      EARTX, HERST, HERLD,
+      BAUJJ, TYPBZ, SERGE,
+      GROES, BRGEW, GEWEI,
+      ANSWT, WAERS, ANSDT,
+      BAUMM, INGRP, TPLMA,
+      BEBER, ABCKZ, EQFNR,
+      MSGRP, KOSTL, STORT,
+      ARBPL, ERDAT, AEDAT
+      )
+    values ( #{tplnr,jdbcType=VARCHAR}, #{pltxt,jdbcType=VARCHAR},
+      #{sttxt,jdbcType=VARCHAR}, #{iwerk,jdbcType=VARCHAR}, #{eqart,jdbcType=VARCHAR},
+      #{eartx,jdbcType=VARCHAR}, #{herst,jdbcType=VARCHAR}, #{herld,jdbcType=VARCHAR},
+      #{baujj,jdbcType=VARCHAR}, #{typbz,jdbcType=VARCHAR}, #{serge,jdbcType=VARCHAR},
+      #{groes,jdbcType=VARCHAR}, #{brgew,jdbcType=VARCHAR}, #{gewei,jdbcType=VARCHAR},
+      #{answt,jdbcType=VARCHAR}, #{waers,jdbcType=VARCHAR}, #{ansdt,jdbcType=VARCHAR},
+      #{baumm,jdbcType=VARCHAR}, #{ingrp,jdbcType=VARCHAR}, #{tplma,jdbcType=VARCHAR},
+      #{beber,jdbcType=VARCHAR}, #{abckz,jdbcType=VARCHAR}, #{eqfnr,jdbcType=VARCHAR},
+      #{msgrp,jdbcType=VARCHAR}, #{kostl,jdbcType=VARCHAR}, #{stort,jdbcType=VARCHAR},
+      #{arbpl,jdbcType=VARCHAR}, #{erdat,jdbcType=VARCHAR}, #{aedat,jdbcType=VARCHAR})
+ELSE
+    update ZCNIFUNCLOCMD
+    set TPLNR = #{tplnr,jdbcType=VARCHAR},
+      PLTXT = #{pltxt,jdbcType=VARCHAR},
+      STTXT = #{sttxt,jdbcType=VARCHAR},
+      IWERK = #{iwerk,jdbcType=VARCHAR},
+      EQART = #{eqart,jdbcType=VARCHAR},
+      EARTX = #{eartx,jdbcType=VARCHAR},
+      HERST = #{herst,jdbcType=VARCHAR},
+      HERLD = #{herld,jdbcType=VARCHAR},
+      BAUJJ = #{baujj,jdbcType=VARCHAR},
+      TYPBZ = #{typbz,jdbcType=VARCHAR},
+      SERGE = #{serge,jdbcType=VARCHAR},
+      GROES = #{groes,jdbcType=VARCHAR},
+      BRGEW = #{brgew,jdbcType=VARCHAR},
+      GEWEI = #{gewei,jdbcType=VARCHAR},
+      ANSWT = #{answt,jdbcType=VARCHAR},
+      WAERS = #{waers,jdbcType=VARCHAR},
+      ANSDT = #{ansdt,jdbcType=VARCHAR},
+      BAUMM = #{baumm,jdbcType=VARCHAR},
+      INGRP = #{ingrp,jdbcType=VARCHAR},
+      TPLMA = #{tplma,jdbcType=VARCHAR},
+      BEBER = #{beber,jdbcType=VARCHAR},
+      ABCKZ = #{abckz,jdbcType=VARCHAR},
+      EQFNR = #{eqfnr,jdbcType=VARCHAR},
+      MSGRP = #{msgrp,jdbcType=VARCHAR},
+      KOSTL = #{kostl,jdbcType=VARCHAR},
+      STORT = #{stort,jdbcType=VARCHAR},
+      ARBPL = #{arbpl,jdbcType=VARCHAR},
+      ERDAT = #{erdat,jdbcType=VARCHAR},
+      AEDAT = #{aedat,jdbcType=VARCHAR}
+    where TPLNR = #{tplnr,jdbcType=VARCHAR}
+
+-- 设备层级
+
+    IF NOT exists(
+    SELECT TOP 1 * FROM equipmentlevel
+    WHERE functionallocation = #{tplnr,jdbcType=VARCHAR}
+    AND parentequipment = #{tplma,jdbcType=VARCHAR}
+    )
+    insert into equipmentlevel (
+            [functionallocation]
+           ,[parentequipment]
+           ,[equipmentname]
+      )
+    values (
+        #{tplnr,jdbcType=VARCHAR},
+        #{tplma,jdbcType=VARCHAR},
+        #{pltxt,jdbcType=VARCHAR}
+      )
+    ELSE
+    update equipmentlevel
+    set [functionallocation] = #{tplnr,jdbcType=VARCHAR},
+      [equipmentname] = #{pltxt,jdbcType=VARCHAR},
+      [parentequipment] = #{tplma,jdbcType=VARCHAR}
+    WHERE functionallocation = #{tplnr,jdbcType=VARCHAR}
+    AND parentequipment = #{tplnr,jdbcType=VARCHAR}
+
+-- 设备铭牌
+
+    IF NOT exists(
+    SELECT TOP 1 * FROM equipmentnameplate
+    WHERE functionallocation = #{tplnr,jdbcType=VARCHAR}
+    )
+    insert into equipmentnameplate (
+            [functionallocation]
+           ,[productmodel]
+           ,[serialnumber]
+           ,[suttle]
+           ,[dimensions]
+           ,[manufacturingdate]
+           ,[manufacturer]
+      )
+    values (
+        #{tplnr,jdbcType=VARCHAR}
+        ,#{typbz,jdbcType=VARCHAR}
+        ,#{serge,jdbcType=VARCHAR}
+        ,#{brgew,jdbcType=VARCHAR}
+        ,#{groes,jdbcType=VARCHAR}
+        ,#{baujj,jdbcType=VARCHAR}
+        ,#{herst,jdbcType=VARCHAR}
+      )
+    ELSE
+    update equipmentnameplate
+    set [functionallocation] = #{tplnr,jdbcType=VARCHAR},
+      [productmodel] = #{typbz,jdbcType=VARCHAR},
+      [serialnumber] = #{serge,jdbcType=VARCHAR},
+      [suttle] = #{brgew,jdbcType=VARCHAR},
+      [dimensions] = #{groes,jdbcType=VARCHAR},
+      [manufacturingdate] = #{baujj,jdbcType=VARCHAR},
+      [manufacturer] = #{herst,jdbcType=VARCHAR}
+    WHERE functionallocation = #{tplnr,jdbcType=VARCHAR}
+
+-- 站设备
+
+    IF NOT exists(
+    SELECT TOP 1 * FROM stationequipment
+    WHERE functionallocation = #{tplnr,jdbcType=VARCHAR}
+    )
+    begin
+
+-- 机器设备
+
+    IF NOT exists(
+    SELECT TOP 1 * FROM equipment
+    WHERE functionallocation = #{tplnr,jdbcType=VARCHAR}
+    )
+    insert into equipment ([functionallocation]
+           ,[equipmentname]
+           ,[type]
+           ,[manufacturer]
+           ,[maintenanceapplication]
+      )
+    values (#{tplnr,jdbcType=VARCHAR},#{pltxt,jdbcType=VARCHAR},
+      #{typbz,jdbcType=VARCHAR}, #{herst,jdbcType=VARCHAR}, #{herst,jdbcType=VARCHAR}
+      )
+    ELSE
+    update equipment
+    set [functionallocation] = #{tplnr,jdbcType=VARCHAR},
+      [equipmentname] = #{pltxt,jdbcType=VARCHAR},
+      [type] = #{typbz,jdbcType=VARCHAR},
+      [manufacturer] = #{herst,jdbcType=VARCHAR},
+      [maintenanceapplication] = #{herst,jdbcType=VARCHAR}
+    WHERE functionallocation = #{tplnr,jdbcType=VARCHAR}
+    end
+
+    ELSE
+    update stationequipment
+    set [functionallocation] = #{tplnr,jdbcType=VARCHAR},
+      [equipmentname] = #{pltxt,jdbcType=VARCHAR},
+      [commissioningdate] = #{erdat,jdbcType=VARCHAR}
+    WHERE functionallocation = #{tplnr,jdbcType=VARCHAR}
+
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.byd.emg.pojo.ZCNIFUNCLOCMD">
+    update ZCNIFUNCLOCMD
+    <set>
+      <if test="tplnr != null">
+        TPLNR = #{tplnr,jdbcType=VARCHAR},
+      </if>
+      <if test="pltxt != null">
+        PLTXT = #{pltxt,jdbcType=VARCHAR},
+      </if>
+      <if test="sttxt != null">
+        STTXT = #{sttxt,jdbcType=VARCHAR},
+      </if>
+      <if test="iwerk != null">
+        IWERK = #{iwerk,jdbcType=VARCHAR},
+      </if>
+      <if test="eqart != null">
+        EQART = #{eqart,jdbcType=VARCHAR},
+      </if>
+      <if test="eartx != null">
+        EARTX = #{eartx,jdbcType=VARCHAR},
+      </if>
+      <if test="herst != null">
+        HERST = #{herst,jdbcType=VARCHAR},
+      </if>
+      <if test="herld != null">
+        HERLD = #{herld,jdbcType=VARCHAR},
+      </if>
+      <if test="baujj != null">
+        BAUJJ = #{baujj,jdbcType=VARCHAR},
+      </if>
+      <if test="typbz != null">
+        TYPBZ = #{typbz,jdbcType=VARCHAR},
+      </if>
+      <if test="serge != null">
+        SERGE = #{serge,jdbcType=VARCHAR},
+      </if>
+      <if test="groes != null">
+        GROES = #{groes,jdbcType=VARCHAR},
+      </if>
+      <if test="brgew != null">
+        BRGEW = #{brgew,jdbcType=VARCHAR},
+      </if>
+      <if test="gewei != null">
+        GEWEI = #{gewei,jdbcType=VARCHAR},
+      </if>
+      <if test="answt != null">
+        ANSWT = #{answt,jdbcType=VARCHAR},
+      </if>
+      <if test="waers != null">
+        WAERS = #{waers,jdbcType=VARCHAR},
+      </if>
+      <if test="ansdt != null">
+        ANSDT = #{ansdt,jdbcType=VARCHAR},
+      </if>
+      <if test="baumm != null">
+        BAUMM = #{baumm,jdbcType=VARCHAR},
+      </if>
+      <if test="ingrp != null">
+        INGRP = #{ingrp,jdbcType=VARCHAR},
+      </if>
+      <if test="tplma != null">
+        TPLMA = #{tplma,jdbcType=VARCHAR},
+      </if>
+      <if test="beber != null">
+        BEBER = #{beber,jdbcType=VARCHAR},
+      </if>
+      <if test="abckz != null">
+        ABCKZ = #{abckz,jdbcType=VARCHAR},
+      </if>
+      <if test="eqfnr != null">
+        EQFNR = #{eqfnr,jdbcType=VARCHAR},
+      </if>
+      <if test="msgrp != null">
+        MSGRP = #{msgrp,jdbcType=VARCHAR},
+      </if>
+      <if test="kostl != null">
+        KOSTL = #{kostl,jdbcType=VARCHAR},
+      </if>
+      <if test="stort != null">
+        STORT = #{stort,jdbcType=VARCHAR},
+      </if>
+      <if test="arbpl != null">
+        ARBPL = #{arbpl,jdbcType=VARCHAR},
+      </if>
+      <if test="erdat != null">
+        ERDAT = #{erdat,jdbcType=VARCHAR},
+      </if>
+      <if test="aedat != null">
+        AEDAT = #{aedat,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where MDID = #{mdid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.byd.emg.pojo.ZCNIFUNCLOCMD">
+    update ZCNIFUNCLOCMD
+    set TPLNR = #{tplnr,jdbcType=VARCHAR},
+      PLTXT = #{pltxt,jdbcType=VARCHAR},
+      STTXT = #{sttxt,jdbcType=VARCHAR},
+      IWERK = #{iwerk,jdbcType=VARCHAR},
+      EQART = #{eqart,jdbcType=VARCHAR},
+      EARTX = #{eartx,jdbcType=VARCHAR},
+      HERST = #{herst,jdbcType=VARCHAR},
+      HERLD = #{herld,jdbcType=VARCHAR},
+      BAUJJ = #{baujj,jdbcType=VARCHAR},
+      TYPBZ = #{typbz,jdbcType=VARCHAR},
+      SERGE = #{serge,jdbcType=VARCHAR},
+      GROES = #{groes,jdbcType=VARCHAR},
+      BRGEW = #{brgew,jdbcType=VARCHAR},
+      GEWEI = #{gewei,jdbcType=VARCHAR},
+      ANSWT = #{answt,jdbcType=VARCHAR},
+      WAERS = #{waers,jdbcType=VARCHAR},
+      ANSDT = #{ansdt,jdbcType=VARCHAR},
+      BAUMM = #{baumm,jdbcType=VARCHAR},
+      INGRP = #{ingrp,jdbcType=VARCHAR},
+      TPLMA = #{tplma,jdbcType=VARCHAR},
+      BEBER = #{beber,jdbcType=VARCHAR},
+      ABCKZ = #{abckz,jdbcType=VARCHAR},
+      EQFNR = #{eqfnr,jdbcType=VARCHAR},
+      MSGRP = #{msgrp,jdbcType=VARCHAR},
+      KOSTL = #{kostl,jdbcType=VARCHAR},
+      STORT = #{stort,jdbcType=VARCHAR},
+      ARBPL = #{arbpl,jdbcType=VARCHAR},
+      ERDAT = #{erdat,jdbcType=VARCHAR},
+      AEDAT = #{aedat,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where MDID = #{mdid,jdbcType=INTEGER}
+  </update>
+</mapper>

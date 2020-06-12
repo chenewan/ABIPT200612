@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.byd.emg.mapper.ZCNIMATSTOCKMapper">
+  <resultMap id="BaseResultMap" type="com.byd.emg.pojo.ZCNIMATSTOCK">
+    <id column="STOCKID" jdbcType="INTEGER" property="stockid" />
+    <result column="MATNR" jdbcType="VARCHAR" property="matnr" />
+    <result column="WERKS" jdbcType="VARCHAR" property="werks" />
+    <result column="BWTAR" jdbcType="VARCHAR" property="bwtar" />
+    <result column="LVORM" jdbcType="VARCHAR" property="lvorm" />
+    <result column="LBKUM" jdbcType="VARCHAR" property="lbkum" />
+    <result column="STPRS" jdbcType="VARCHAR" property="stprs" />
+    <result column="ERSDA" jdbcType="VARCHAR" property="ersda" />
+    <result column="LAEDA" jdbcType="VARCHAR" property="laeda" />
+    <result column="Remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    STOCKID, MATNR, WERKS, BWTAR, LVORM, LBKUM, STPRS, ERSDA, LAEDA, Remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZCNIMATSTOCK
+    where STOCKID = #{stockid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ZCNIMATSTOCK
+    where STOCKID = #{stockid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.byd.emg.pojo.ZCNIMATSTOCK">
+    insert into ZCNIMATSTOCK (STOCKID, MATNR, WERKS, 
+      BWTAR, LVORM, LBKUM, 
+      STPRS, ERSDA, LAEDA, 
+      Remark)
+    values (#{stockid,jdbcType=INTEGER}, #{matnr,jdbcType=VARCHAR}, #{werks,jdbcType=VARCHAR}, 
+      #{bwtar,jdbcType=VARCHAR}, #{lvorm,jdbcType=VARCHAR}, #{lbkum,jdbcType=VARCHAR}, 
+      #{stprs,jdbcType=VARCHAR}, #{ersda,jdbcType=VARCHAR}, #{laeda,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.byd.emg.pojo.ZCNIMATSTOCK">
+    insert into ZCNIMATSTOCK
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stockid != null">
+        STOCKID,
+      </if>
+      <if test="matnr != null">
+        MATNR,
+      </if>
+      <if test="werks != null">
+        WERKS,
+      </if>
+      <if test="bwtar != null">
+        BWTAR,
+      </if>
+      <if test="lvorm != null">
+        LVORM,
+      </if>
+      <if test="lbkum != null">
+        LBKUM,
+      </if>
+      <if test="stprs != null">
+        STPRS,
+      </if>
+      <if test="ersda != null">
+        ERSDA,
+      </if>
+      <if test="laeda != null">
+        LAEDA,
+      </if>
+      <if test="remark != null">
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stockid != null">
+        #{stockid,jdbcType=INTEGER},
+      </if>
+      <if test="matnr != null">
+        #{matnr,jdbcType=VARCHAR},
+      </if>
+      <if test="werks != null">
+        #{werks,jdbcType=VARCHAR},
+      </if>
+      <if test="bwtar != null">
+        #{bwtar,jdbcType=VARCHAR},
+      </if>
+      <if test="lvorm != null">
+        #{lvorm,jdbcType=VARCHAR},
+      </if>
+      <if test="lbkum != null">
+        #{lbkum,jdbcType=VARCHAR},
+      </if>
+      <if test="stprs != null">
+        #{stprs,jdbcType=VARCHAR},
+      </if>
+      <if test="ersda != null">
+        #{ersda,jdbcType=VARCHAR},
+      </if>
+      <if test="laeda != null">
+        #{laeda,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.byd.emg.pojo.ZCNIMATSTOCK">
+    update ZCNIMATSTOCK
+    <set>
+      <if test="matnr != null">
+        MATNR = #{matnr,jdbcType=VARCHAR},
+      </if>
+      <if test="werks != null">
+        WERKS = #{werks,jdbcType=VARCHAR},
+      </if>
+      <if test="bwtar != null">
+        BWTAR = #{bwtar,jdbcType=VARCHAR},
+      </if>
+      <if test="lvorm != null">
+        LVORM = #{lvorm,jdbcType=VARCHAR},
+      </if>
+      <if test="lbkum != null">
+        LBKUM = #{lbkum,jdbcType=VARCHAR},
+      </if>
+      <if test="stprs != null">
+        STPRS = #{stprs,jdbcType=VARCHAR},
+      </if>
+      <if test="ersda != null">
+        ERSDA = #{ersda,jdbcType=VARCHAR},
+      </if>
+      <if test="laeda != null">
+        LAEDA = #{laeda,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where STOCKID = #{stockid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.byd.emg.pojo.ZCNIMATSTOCK">
+    update ZCNIMATSTOCK
+    set MATNR = #{matnr,jdbcType=VARCHAR},
+      WERKS = #{werks,jdbcType=VARCHAR},
+      BWTAR = #{bwtar,jdbcType=VARCHAR},
+      LVORM = #{lvorm,jdbcType=VARCHAR},
+      LBKUM = #{lbkum,jdbcType=VARCHAR},
+      STPRS = #{stprs,jdbcType=VARCHAR},
+      ERSDA = #{ersda,jdbcType=VARCHAR},
+      LAEDA = #{laeda,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where STOCKID = #{stockid,jdbcType=INTEGER}
+  </update>
+</mapper>
